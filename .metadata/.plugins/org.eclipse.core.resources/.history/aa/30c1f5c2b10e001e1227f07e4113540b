@@ -1,0 +1,63 @@
+package package6_BackTracking;
+
+public class P1_Rat_in_a_maze {
+	
+	public static void solveMaze(int[][] maze) {
+		
+		int[][] sol = new int[4][4];
+		
+		int r = 0;
+		int c = 0;
+		int n = 4;
+		int m = 4;
+		
+		if(solveMazeUtil(maze, 0, 0, n, m, sol)) {
+			printSol(sol);
+			return;
+		}else {
+			System.out.println("No Solution Possible");
+			return;
+		}
+		
+	}
+	
+	public static boolean solveMazeUtil(int[][] maze, int row, int col, int n, int m, int[][] sol) {
+		
+		int nextRow = row;
+		int nextCol = col+1;
+		
+		if(col+1 == 4) {
+			nextCol = 0;
+			nextRow = row+1;
+		}
+		
+		if(isSafe(maze, nextRow, nextCol)) {
+			sol[row][col] = 1;
+			if(solveMazeUtil(maze, nextRow, nextCol, n, m, sol)) {
+				return true;
+			}
+			sol[row][col] = 0;
+		}
+		
+		return false;
+	}
+	
+	public static boolean isSafe(int[][] maze, int row, int col) {
+		if(maze[row][col] != 1 ) {
+			
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		
+        int maze[][] = { { 1, 0, 0, 0 },
+                         { 1, 1, 0, 1 },
+                         { 0, 1, 0, 0 },
+                         { 1, 1, 1, 1 } };
+        
+        solveMaze(maze);
+
+	}
+
+}

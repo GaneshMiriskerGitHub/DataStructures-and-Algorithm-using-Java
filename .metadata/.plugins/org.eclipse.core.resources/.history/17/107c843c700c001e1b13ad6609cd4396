@@ -1,0 +1,15 @@
+package package8_BackTracking;
+
+public class P3_Finding_Permutations {
+
+	public static void main(String[] args) {
+		
+		String str = "abc";
+		
+		String ans = "";
+		
+		findAllPermutations(str, ans);
+
+	}
+
+}

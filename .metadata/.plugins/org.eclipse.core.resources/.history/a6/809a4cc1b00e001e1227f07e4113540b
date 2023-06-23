@@ -1,0 +1,24 @@
+package package6_BackTracking;
+
+public class P1_Rat_in_a_maze {
+	
+	public static void solveMaze(int[][] maze, int[][] sol) {
+		
+	}
+
+	public static void main(String[] args) {
+		
+        int maze[][] = { { 1, 0, 0, 0 },
+                         { 1, 1, 0, 1 },
+                         { 0, 1, 0, 0 },
+                         { 1, 1, 1, 1 } };
+        
+        int n = 4;
+        
+        int[][] sol = new int[4][4];
+  
+        solveMaze(maze, sol);
+
+	}
+
+}

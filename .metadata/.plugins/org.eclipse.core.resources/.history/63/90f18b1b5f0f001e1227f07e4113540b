@@ -1,0 +1,24 @@
+package package5_BackTracking;
+
+public class P4_Find_longest_Path {
+	
+	public static void findLongestPath(int[][] mat, int i, int j, int n, int m) {
+		
+		
+	}
+
+	public static void main(String[] args) {
+		
+
+	    // input matrix with hurdles shown with number 0
+	    int mat[][] = { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+	                   { 1, 1, 0, 1, 1, 0, 1, 1, 0, 1 },
+	                   { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
+	 
+	    // find longest path with source (0, 0) and
+	    // destination (1, 7)
+	    findLongestPath(mat, 0, 0, 1, 7);
+
+	}
+
+}

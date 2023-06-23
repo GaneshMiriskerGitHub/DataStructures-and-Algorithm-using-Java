@@ -1,0 +1,36 @@
+package package5_BackTracking;
+
+public class P4_Find_longest_Path {
+	
+	class Pair {
+		boolean found;
+		int val;
+		
+		public Pair(boolean found, int val) {
+			this.found = found;
+			this.val = val;
+		}
+	}
+	
+	public static void findLongestPath(int[][] mat, int i, int j, int n, int m) { // https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
+		int R = mat.length;
+		int C = mat[0].length;
+		boolean[][] visited = new boolean[R][C];
+		Pair p = findLongestPathUtil(mat, i, j, n, m, visited);
+	}
+
+	public static void main(String[] args) {
+		
+
+	    // input matrix with hurdles shown with number 0
+	    int mat[][] = { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+	                   { 1, 1, 0, 1, 1, 0, 1, 1, 0, 1 },
+	                   { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
+	 
+	    // find longest path with source (0, 0) and
+	    // destination (1, 7)
+	    findLongestPath(mat, 0, 0, 1, 7);
+
+	}
+
+}

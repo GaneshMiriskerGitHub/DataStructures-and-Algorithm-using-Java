@@ -1,0 +1,12 @@
+package package8_BackTracking;
+
+public class A3_Knights_Tour {
+
+	public static void main(String[] args) {
+		
+		int N = 8;
+		
+
+	}
+
+}

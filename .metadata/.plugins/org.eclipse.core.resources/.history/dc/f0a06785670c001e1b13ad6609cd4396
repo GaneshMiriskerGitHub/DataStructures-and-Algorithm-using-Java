@@ -1,0 +1,21 @@
+package package8_BackTracking;
+
+public class P1_BackTrack_on_Array {
+	
+	public static void backTrackOnArray(int[] arr, int i) {
+		
+		if(i == arr.length) {
+			return;
+		}
+		
+		arr[i] = i+1;
+		backTrackOnArray(arr, i+1);
+	}
+
+	public static void main(String[] args) {
+		
+		backTrackOnArray(new int[5], 0);
+
+	}
+
+}

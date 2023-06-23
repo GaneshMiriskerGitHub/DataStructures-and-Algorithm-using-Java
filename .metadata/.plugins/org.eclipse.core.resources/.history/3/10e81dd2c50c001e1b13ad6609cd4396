@@ -1,0 +1,19 @@
+package package8_BackTracking;
+
+public class P4_N_Queens_basic {
+	
+	public static void nQueens(char[][] board, int row) {
+		
+	}
+
+	public static void main(String[] args) {
+		
+		// 
+		int n = 2;
+		char[][] board = new char[n][n];
+		int rowTobeStarted = 0;
+		nQueens(board, rowTobeStarted)
+
+	}
+
+}
