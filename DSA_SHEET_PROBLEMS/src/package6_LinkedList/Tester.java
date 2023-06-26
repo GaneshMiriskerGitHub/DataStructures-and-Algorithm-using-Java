@@ -1,6 +1,6 @@
-package package5_BackTracking;
+package package6_LinkedList;
 
-public class P7_M_Coloring_Problem { // graph
+public class Tester {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -1,10 +1,10 @@
 package package5_BackTracking;
 
-public class P7_M_Coloring_Problem { // graph
+public class PP15_Hamilton_Cycle { // Graph
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-	}
+	
 
 }
