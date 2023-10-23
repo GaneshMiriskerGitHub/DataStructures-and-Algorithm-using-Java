@@ -181,7 +181,7 @@ public class LL2 {
 		// nth node from last == (size-n+1)th node from first
 		int idx = sz - n + 1;
 		Node prev = head;
-		for (int i = 1; i <= idx; i++) {
+		for (int i = 1; i < idx-1; i++) {
 			prev = prev.next;
 		}
 		int val = prev.next.data;
@@ -283,8 +283,8 @@ public class LL2 {
 	}
 
 	public static Node mergeSort(Node head) {
-		
-		if(head == null || head.next == null) {
+
+		if (head == null || head.next == null) {
 			return head;
 		}
 
@@ -336,12 +336,95 @@ public class LL2 {
 			rightNode = rightNode.next;
 
 		}
-		
+
 		return mergedLL.next;
 	}
 
+	public static void zigzag() {
+		// find mid : this mid node should be last node of first half
+		Node slow = head;
+		Node fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		Node midNode = slow;
+		Node leftHalf = head;
+		Node rightHalf = midNode.next;
+		midNode.next = null;
+
+		// reverse the right half
+		Node prev = null;
+		Node curr = rightHalf;
+		Node next;
+		while(curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		
+	
+		Node leftHead = leftHalf;
+		Node rightHead = prev;
+		
+		printLL(leftHead);
+		System.out.println();
+		printLL(rightHead);
+		
+		
+		// merging
+		Node zigzag = new Node(-1);
+		Node temp = zigzag;
+		boolean flag = true;
+		while(rightHead != null && leftHead != null) {
+			if(flag) {
+				temp.next = leftHead;
+				leftHead = leftHead.next;
+				temp = temp.next;
+				flag = false;
+			}else {
+				temp.next = rightHead;
+				rightHead = rightHead.next;
+				temp = temp.next;
+				flag = true;
+			}
+		}
+		
+		while(rightHead != null) {
+			temp.next = rightHead;
+			leftHead = rightHead.next;
+			temp = temp.next;
+		}
+		
+		while(leftHead != null) {
+			temp.next = leftHead;
+			leftHead = leftHead.next;
+			temp = temp.next;
+		}
+		
+		
+		System.out.println("final answer is : ");
+		printLL(zigzag.next);
+		
+
+	}
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		LL2 list = new LL2();
+		list.addLast(1);
+		list.addLast(2);
+		list.addLast(3);
+		list.addLast(4);
+		list.addLast(5);
+		
+		System.out.println(list.removeNthNode(2));
+		
+		printLL(head);
+		
+		
 
 	}
 

@@ -30,6 +30,8 @@ public class LL1 {
 		size++;
 	}
 	
+	
+	
 	public static void addLast(int data) {
 		Node newNode = new Node(data);
 		if(head == null) {
