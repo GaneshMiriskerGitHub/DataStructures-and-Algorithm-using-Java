@@ -1,0 +1,35 @@
+package packagee11_Stacks;
+
+import java.util.Arrays;
+import java.util.Stack;
+
+public class PP11_Max_Area_Rectangle {
+
+	public static void main(String[] args) {
+		
+		int[] arr = {2, 1, 5, 6, 2, 3};
+		
+		int[] nextSmallerLeft = new int[arr.length];
+		Stack<Integer> st = new Stack<>();
+		st.push(arr[arr.length-1]);
+		nextSmallerLeft[arr.length-1] = -1;
+		for(int i=arr.length-2;i>=0;i--) {
+			int curr = arr[i];
+			while(!st.isEmpty() && curr >= st.peek()) {
+				st.pop();
+			}
+			
+			if(st.isEmpty()) {
+				nextSmallerLeft[i] = -1;
+			}else {
+				st.peek();
+			}
+			
+			st.push(arr[i]);
+		}
+		
+		System.out.println(Arrays.toString(nextSmallerLeft));
+
+	}
+
+}

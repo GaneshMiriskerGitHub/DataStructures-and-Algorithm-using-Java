@@ -1,73 +1,64 @@
 package package8_BackTracking;
 
-import java.util.ArrayList;
-
 public class Tester {
 
-	public static ArrayList<String> findPath(int[][] m, int n) {
-		// Your code here
-		ArrayList<String> result = new ArrayList<>();
-
-		findWays(m, n, result, 0, 0, "");
-
-		return result;
+	public static void printSol(int[][] grid) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				System.out.print(grid[i][j]+ " ");
+			}
+			System.out.println();
+		}
 	}
-
-	public static  String findWays(int[][] m, int n, ArrayList<String> result, int row, int col, String path) {
-
-		if (row == m.length - 1 && col == m[row].length - 1) {
-			return path;
+	
+	public static boolean solveKnighTourCode(int[][] chess, int r, int c, int count, int[] xMoves, int[] yMoves) {
+		
+		if(count == 8*8) return true;
+		
+		for(int i=0;i<chess.length;i++) {
+			if(isSafe(chess, r+xMoves[i], c+yMoves[i])) {
+				chess[r+xMoves[i]][c+yMoves[i]] = count;
+				if(solveKnighTourCode(chess, r+xMoves[i], c+yMoves[i], count+1, xMoves, yMoves)) {
+					return true;
+				}else {
+					chess[r+xMoves[i]][c+yMoves[i]] = -1;
+				}
+			}
 		}
 		
-		ArrayList<String> res = new ArrayList<>();
-
-		if (isSafe(m, row, col)) {
-
-			m[row][col] = 0;
-			// right
-			res.add(findWays(m, n, result, row, col + 1, path + "R"));   
-
-			// left
-			res.add(findWays(m, n, result, row, col - 1, path + "L"));
-
-			// up
-			res.add(findWays(m, n, result, row - 1, col, path + "U"));
-
-			res.add(findWays(m, n, result, row + 1, col, path + "D"));
-			
-			;
-			
-			m[row][col] = 1;
-			
-			
-
-		}
+		return false;
 		
-		return "-1";
-
-	}
-
-	public static boolean isSafe(int[][] m, int row, int col) {
-		if (row < 0 || col < 0 || row == m.length || col == m[row].length || m[row][col] == 0) {
+	} 
+	
+	public static boolean isSafe(int[][] chess, int row, int col) {
+		if(row<0 || col<0 || row>chess.length-1 || col>chess.length-1 || chess[row][col] != -1) {
 			return false;
 		}
-
+		
 		return true;
 	}
+    
 
-	public static void main(String[] args) {
-
-		int n = 4;
-		int m = 4;
-		int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 1, 1, 1, 1 } };
-		int[][] sol = new int[n][m];
-
-		ArrayList<String> list = findPath(maze, n);
-		
-		for(String ele: list) {
-			System.out.println(ele);
-		}
-
-	}
-
+    public static void main(String[] args) {
+        
+    	int[][] chess = new int[8][8];
+    	
+    	int[] xMoves = {2, 1, -1, -2, -2, -1, 1, 2};
+        int[] yMoves = {1, 2, 2, 1, -1, -2, -2, -1};
+        
+        for(int i=0;i<chess.length;i++) {
+        	for(int j=0;j<chess[i].length;j++) {
+        		chess[i][j] = -1;
+        	}
+        }
+        
+        chess[0][0] = 0;
+    	
+    	if(solveKnighTourCode(chess, 0, 0, 1, xMoves, yMoves)) {
+    		printSol(chess);
+    	}else {
+    		System.out.println("false");
+    	}
+    	
+    }
 }

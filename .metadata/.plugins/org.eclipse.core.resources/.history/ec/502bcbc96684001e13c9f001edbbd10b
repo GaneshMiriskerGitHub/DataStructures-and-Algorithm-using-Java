@@ -1,0 +1,19 @@
+package packagee13_Greedy;
+
+import java.util.Arrays;
+
+public class Tester {
+
+
+
+	public static void main(String[] args) {
+
+		// Input
+		int N = 5;
+		int K = 42;
+
+		lexoSmall(N, K);
+
+	}
+
+}

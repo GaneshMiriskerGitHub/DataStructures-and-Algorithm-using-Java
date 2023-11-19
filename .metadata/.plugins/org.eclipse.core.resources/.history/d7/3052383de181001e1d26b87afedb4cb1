@@ -1,0 +1,18 @@
+package package6_Recursion;
+
+public class P8_Friends_Pairing_Problem {
+	
+	public static void noOfWays(int n) {
+		
+		// no pair
+		int w1 = 1*noOfWays(n-1);
+		
+	}
+
+	public static void main(String[] args) {
+		
+		noOfWays(n);
+
+	}
+
+}

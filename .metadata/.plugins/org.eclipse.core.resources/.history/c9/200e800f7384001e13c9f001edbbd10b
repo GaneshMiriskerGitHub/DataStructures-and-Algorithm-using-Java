@@ -1,0 +1,41 @@
+package package8_Greedy;
+
+import java.util.Arrays;
+
+public class P3_Minimsum_of_numbers {
+	
+	public static void printMinimumSum(int[] arr) {
+		
+		Arrays.sort(arr);
+		
+		StringBuilder sb1 = new StringBuilder();
+		StringBuilder sb2 = new StringBuilder();
+		
+		boolean flag = true;
+		
+		for(int ele: arr) {
+			if(flag) {
+				sb1.append(ele);
+			}else {
+				sb2.append(ele);
+			}
+		}
+		
+		String str1 = sb1.toString();
+		String str2 = sb2.toString();
+		
+		for(int i=0;i<str1.length();i++) {
+			char ch = str1.charAt(i);
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		int[] arr = {6, 8, 4, 5, 2, 3};
+		
+		printMinimumSum(arr);
+
+	}
+
+}

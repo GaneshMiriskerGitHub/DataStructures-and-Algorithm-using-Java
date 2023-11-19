@@ -109,6 +109,8 @@ public class BT3 {
 			if (root.data == data) {
 				return true;
 			}
+			
+			path.add(root.data);
 
 			boolean foundLeft = getPath(root.left, data, path);
 			boolean foundRight = getPath(root.right, data, path);
@@ -123,7 +125,7 @@ public class BT3 {
 		}
 
 		// 2nd approach
-		public static Node lowestCommonAncestor2(Node root, int n1, int n2) {
+		public static Node lowestCommonAncestorTwo(Node root, int n1, int n2) {
 
 			if (root == null) {
 				return null;
@@ -134,8 +136,8 @@ public class BT3 {
 			}
 
 			// find in left subtree and right subtree
-			Node leftSubTree = lowestCommonAncestor2(root.left, n1, n2);
-			Node rightSubTree = lowestCommonAncestor2(root.right, n1, n2);
+			Node leftSubTree = lowestCommonAncestorTwo(root.left, n1, n2);
+			Node rightSubTree = lowestCommonAncestorTwo(root.right, n1, n2);
 
 			if (leftSubTree == null) {
 				return rightSubTree;
@@ -172,7 +174,7 @@ public class BT3 {
 		}
 
 		public static int minDist(Node root, int n1, int n2) {
-			Node lca = lowestCommonAncestor2(root, n1, n2);
+			Node lca = lowestCommonAncestorTwo(root, n1, n2);
 
 			int distn1 = dist_root_to_n(lca, n1);
 			int distn2 = dist_root_to_n(lca, n2);
@@ -265,10 +267,10 @@ public class BT3 {
 		BinaryTree.printKthLevelElements(root, 2, 1);
 		BinaryTree.LowestCommonAncestor(root, 2, 3);
 		System.out.println();
-		System.out.println("lca using second approach answer is : " + tree.lowestCommonAncestor2(root, 2, 3).data);
+		System.out.println("lca using second approach answer is : " + tree.lowestCommonAncestorTwo(root, 2, 3).data);
 		System.out.println("Minimum distance from n1 and n2 node is : " + tree.minDist(root, 4, 7));
 		System.out.print("the kth ancestor of a given node is : ");
-		tree.kthAncestorOfNode(root, 4, 1);
+		System.out.println("kth ancestor = "+ tree.kthAncestorOfNode(root, 4, 1));
 		System.out.println();
 		BinaryTree.sumTree(root);
 		BinaryTree.preOrderTraversal(root);

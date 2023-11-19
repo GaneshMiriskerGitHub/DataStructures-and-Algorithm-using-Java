@@ -1,0 +1,36 @@
+package package5_BackTracking;
+
+import java.util.Arrays;
+
+public class PP14_Partion_of_K_Equal_SubSets { 
+	
+	public static boolean partitionKEqualSubSet(int[] nums, int k) {
+		
+		int sum = Arrays.stream(nums).sum();
+		
+		if(sum%2!=0) return false;
+		
+		int target = sum/k;
+		
+		boolean[] arr = new boolean[nums.length];
+		
+		boolean isPossible = partition(nums, arr, k, target, 0);
+		
+		return isPossible;
+	}
+	
+	public static boolean partition(int[] nums, boolean[] arr, int target) {
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		
+		int[] nums = {4, 3, 2, 3, 5, 2, 1};
+        int K = 4;
+        boolean isPossible = partitionKEqualSubSet(nums, k)
+
+	}
+
+}

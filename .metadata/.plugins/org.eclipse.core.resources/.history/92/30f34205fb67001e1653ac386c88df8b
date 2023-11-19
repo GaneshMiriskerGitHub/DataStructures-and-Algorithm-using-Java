@@ -1,0 +1,81 @@
+package package4_Searching_and_Sorting;
+
+public class PP11_Count_Inversion {
+
+	// brute force :- O(n*n) :
+	// https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/
+	public static void countInversions(int[] arr) {
+
+		int count = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[i] > arr[j]) {
+					count++;
+				}
+			}
+		}
+
+		System.out.println(count);
+
+	}
+
+	// Optimisation using merge sort knowledge
+	public static int mergeSort(int[] arr, int s, int e) {
+
+		if (s >= e)
+			return;
+
+		int m = s + (e - s) / 2;
+
+		mergeSort(arr, s, m);
+		mergeSort(arr, m + 1, e);
+
+		merge(arr, s, m, e);
+	}
+
+	public static void merge(int[] arr, int s, int m, int e) {
+		int[] temp = new int[e - s + 1];
+
+		int i = s;
+		int j = m + 1;
+		int k = 0;
+		while (i <= m && j <= e) {
+			if (arr[i] < arr[j]) {
+				temp[k] = arr[i];
+				i++;
+			} else {
+				temp[k] = arr[j];
+				j++;
+			}
+			k++;
+		}
+
+		while (i <= m) {
+			temp[k] = arr[i];
+			i++;
+			k++;
+		}
+
+		while (j <= e) {
+			temp[k] = arr[j];
+			j++;
+			k++;
+		}
+
+		for (k = 0; k < temp.length; k++) {
+			arr[s] = temp[k];
+			s++;
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 8, 4, 2, 1 };
+
+		countInversions(arr);
+
+	}
+
+}

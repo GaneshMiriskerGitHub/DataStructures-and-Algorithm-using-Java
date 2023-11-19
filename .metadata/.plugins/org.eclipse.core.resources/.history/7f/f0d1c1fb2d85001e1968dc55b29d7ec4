@@ -1,0 +1,48 @@
+package packagee14_BinaryTrees;
+
+public class Tester {
+	
+	class TreeNode {
+	    int val;
+	    TreeNode left, right;
+
+	    public TreeNode(int val) {
+	        this.val = val;
+	    }
+	}
+	
+	 private Map<String, Integer> subtreeCount;
+	    private List<TreeNode> duplicateSubtrees;
+
+	    public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+	        subtreeCount = new HashMap<>();
+	        duplicateSubtrees = new ArrayList<>();
+	        serializeSubtree(root);
+	        return duplicateSubtrees;
+	    }
+
+	    private String serializeSubtree(TreeNode node) {
+	        if (node == null) {
+	            return "#";
+	        }
+
+	        String serialKey = node.val + "," + serializeSubtree(node.left) + "," + serializeSubtree(node.right);
+
+	        // Update the count of the serialized subtree
+	        subtreeCount.put(serialKey, subtreeCount.getOrDefault(serialKey, 0) + 1);
+
+	        // If count becomes 2, this is the second occurrence of the subtree
+	        if (subtreeCount.get(serialKey) == 2) {
+	            duplicateSubtrees.add(node);
+	        }
+
+	        return serialKey;
+	    }
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

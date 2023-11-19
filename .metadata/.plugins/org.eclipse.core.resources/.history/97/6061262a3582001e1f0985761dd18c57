@@ -1,0 +1,23 @@
+package packagee11_Stacks;
+
+public class P5_Reverse_a_string_using_Stack {
+	
+	public static String reverseString(String str) {
+		
+		for(int i=0;i<str.length();i++) {
+			
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		
+		String str = "acbde";
+		
+		String newStr = reverseString(str);
+		
+		System.out.println(newStr);
+
+	}
+
+}

@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class P2_Fractional_Knap_Sack {
 	
-	public static long maxValue(int[] value, int[] weight, int W ) { // put everything in double to get correct accurate answer
+	public static double maxValue(int[] value, int[] weight, int W ) { // put everything in double to get correct accurate answer
 		
 		int[][] knapsack = new int[value.length][4];
 		for(int i=0;i<value.length;i++) {

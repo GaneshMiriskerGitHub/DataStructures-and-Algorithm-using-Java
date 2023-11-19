@@ -1,0 +1,24 @@
+package packagee18_Graphs;
+
+public class PPP20_Krushkals_Algorithm {
+	
+	static class Edge {
+		int src;
+		int des;
+		int wt;
+		
+		public Edge(int s, int d, int w) {
+			this.src = s;
+			this.des = d;
+			this.wt = w;
+		}
+	}
+	
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+
+}

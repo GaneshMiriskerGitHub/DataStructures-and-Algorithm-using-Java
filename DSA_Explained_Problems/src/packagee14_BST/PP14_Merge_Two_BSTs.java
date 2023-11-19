@@ -34,7 +34,7 @@ public class PP14_Merge_Two_BSTs {
 		int j=0;
 		int k=0;
 		while(j < list1.size() && k < list2.size()) {
-			if(list1.get(i) > list2.get(i)) {
+			if(list1.get(j) < list2.get(k)) {
 				list.add(list1.get(j));
 				j++;
 				i++;

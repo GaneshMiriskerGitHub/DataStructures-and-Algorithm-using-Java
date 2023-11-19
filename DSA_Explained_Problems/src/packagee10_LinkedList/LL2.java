@@ -422,9 +422,7 @@ public class LL2 {
 		
 		System.out.println(list.removeNthNode(2));
 		
-		printLL(head);
-		
-		
+		printLL(head);	
 
 	}
 

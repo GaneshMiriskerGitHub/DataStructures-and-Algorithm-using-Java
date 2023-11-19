@@ -1,0 +1,25 @@
+package package6_Recursion;
+
+public class Tester {
+	
+	/*
+	 * print the count of substrings whose fisrt and last char is same
+	 * 
+	 */
+
+	public static void printCountOfSubstrings(String str, int i, int j) {
+		
+		int count = 0;
+		if()
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		String str = "abcab";
+		
+		printCountOfSubstrings(str, 0, str.length()-1);
+
+	}
+
+}

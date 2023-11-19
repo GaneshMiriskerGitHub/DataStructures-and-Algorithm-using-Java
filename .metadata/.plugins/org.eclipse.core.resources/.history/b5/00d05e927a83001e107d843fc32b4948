@@ -1,0 +1,21 @@
+package packagee11_Stacks;
+
+import java.util.Stack;
+
+public class P8_Next_Greater_Element {
+
+	public static int[] nextGreater(int[] arr) {
+		Stack<Integer> st = new Stack<>();
+		
+		int[] res = new int[arr.length];
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 6, 8, 0, 1, 3 };
+		
+		nextGreater(arr);
+
+	}
+
+}

@@ -2,36 +2,33 @@ package package4_2D_Arrays;
 
 public class P3_Search_in_Sorted_Matrix {
 
-	public static void search(int[][] matrix, int target) {
-		
+	public static boolean search(int[][] matrix, int target) {
+
 		int n = matrix.length;
-		
-		int row=0;
-		int col = matrix[0].length-1;
-		while(row < n && col >=0) {
-			if(target == matrix[row][col]) {
-				System.out.println("fount at matrix "+row+", "+col);
-				return;
-			}else if(target < matrix[row][col]) {
+
+		int row = 0;
+		int col = matrix[0].length - 1;
+		while (row < n && col >= 0) {
+			if (target == matrix[row][col]) {
+				return true;
+			} else if (target < matrix[row][col]) {
 				col--;
-			}else {
+			} else {
 				row++;
 			}
 		}
-		
-		System.out.println(-1);
+
+		return false;
 	}
+
 
 	public static void main(String[] args) {
 
-		int[][] mat = { { 10, 20, 30, 40 }, 
-						{ 15, 25, 35, 45 },
-						{ 27, 29, 37, 48 },
-						{ 32, 33, 39, 50 } };
+		int[][] mat = { { 1, 4, 5, 9 }, { 10, 13, 17, 21 }, { 27, 37, 38, 68 }, { 68, 69, 71, 74 } };
 
-		int target = 40;
+		int target = 4;
 
-		search(mat, target);
+		System.out.println(search(mat, target));
 
 	}
 

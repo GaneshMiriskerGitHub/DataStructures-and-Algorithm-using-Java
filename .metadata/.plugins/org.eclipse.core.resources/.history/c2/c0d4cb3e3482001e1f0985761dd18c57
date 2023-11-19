@@ -1,0 +1,15 @@
+package packagee11_Stacks;
+
+import java.util.Stack;
+
+public class P4_Push_at_bottom_of_the_stack {
+
+	public static void main(String[] args) {
+		
+		Stack<Integer> st = new Stack<>();
+		
+		
+
+	}
+
+}

@@ -205,8 +205,8 @@ public class P1_Build_BST {
 
 //		printInRange(root, 1, 14);System.out.println();
 		
-//		allRootToLeafPaths(root, new ArrayList<>());
-//		System.out.println(validBST(root, null, null));
+		allRootToLeafPaths(root, new ArrayList<>());
+		System.out.println(validBST(root, null, null));
 		
 //		mirror(root);System.out.println();
 //		inOrder(root);
@@ -214,8 +214,8 @@ public class P1_Build_BST {
 		int[] arr2 = {3, 5, 6, 8, 10, 11, 12};
 		
 		// build a BST from the above sorted array
-		Node createdBST = buildBSTFromSortedArray(arr2, 0, arr2.length-1);
-		inOrder(createdBST);
+		//Node createdBST = buildBSTFromSortedArray(arr2, 0, arr2.length-1);
+		//inOrder(createdBST);
 	}
 
 }

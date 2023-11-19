@@ -1,0 +1,21 @@
+package packagee11_Stacks;
+
+public class P10_Duplicate_Parenthesis {
+	
+	public static boolean containsDuplicate(String str) {
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		
+		String str = "((a+b)+((c+d)))";
+		
+		boolean result = containsDuplicate(str);
+		
+		System.out.println(result);
+
+	}
+
+}

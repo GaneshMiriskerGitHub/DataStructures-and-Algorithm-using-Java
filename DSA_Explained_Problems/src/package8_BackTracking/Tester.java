@@ -1,105 +1,95 @@
 package package8_BackTracking;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Tester {
-	
-	public static void print(int[][] grid) {
-		for(int i=0;i<grid.length;i++) {
-			for(int j=0;j<grid[i].length;j++) {
-				System.out.print(grid[i][j]+ " ");
-			}
-			System.out.println();
-		}
-	}
-	
 
-	public static boolean solveSudoku(int[][] grid, int row, int col) {
-		
-		if(row == 9 && col == 0) {
-			return true;
-		}else if(row == 9) {
-			return false;
-		}
-		
-		int nextRow = row;
-		int nextCol = col;
-		
-		if(col == grid[row].length-1) {
-			nextRow = row+1;
-			nextCol = 0;
-		}else {
-			nextCol = col + 1;
-		}
-
-		if(grid[row][col] != 0) {
-			return solveSudoku(grid, nextRow, nextCol);
-		}else {
-			for(int i=1;i<=9;i++) {
-				int digit = i;
-				if(isSafe(grid, digit, row, col)) {
-					grid[row][col] = digit;
-					if(solveSudoku(grid, nextRow, nextCol)) {
-						return true;
-					}else {
-						grid[row][col] = 0;
-					}
-				}
-			}
-		}
-		
-		return false;
-
-	}
-	
-	public static boolean isSafe(int[][] grid,int digit, int row, int col) {
-		// same row 
-		for(int i=0;i<9;i++) {
-			if(grid[row][i] == digit) {
+	public static boolean isSafe(String[][] board, int row, int col) {
+		//vertically up
+		for(int i=row-1;i>=0;i--) {
+			if(board[i][col] == "Q") {
 				return false;
 			}
 		}
 		
-		// same col
-		for(int i=0;i<9;i++) {
-			if(grid[i][col] == digit) {
+		// diagonal left up
+		for(int i=row-1,j=col-1;i>=0 && j>=0;i--,j--) {
+			if(board[i][j] == "Q") {
 				return false;
 			}
 		}
 		
-		// same grid
-		int sr = (row/3)*3;
-		int sc = (col/3)*3;
-		
-		for(int i=sr;i<sr+3;i++) {
-			for(int j=sc;j<sc+3;j++) {
-				if(grid[i][j] == digit) {
-					return false;
-				}
+		// diagonal right up
+		for(int i=row-1,j=col+1;i>=0 && j<board.length;i--,j++) {
+			if(board[i][j] == "Q") {
+				return false;
 			}
 		}
 		
 		return true;
+		
 	}
 	
 	
+	
+	public static List<List<String>> addBoardToList(String[][] chess) {
+		
+		List<String> list = new ArrayList<>();
+		
+		for (int i = 0; i < 4; i++) {
+			String str = "";
+			for(int j=0;j<4;j++) {
+				str+=chess[i][j];
+			}
+			list.add(str);
+		}
+		
+		List<List<String>> result = new ArrayList<>(); 
+		result.add(list);
+		return result;
+	}
+	
+	public static void nQueens(String[][] chess, int row, List<List<String>> result) {
+		
+		if(row == chess.length) {
+			result.addAll(addBoardToList(chess));
+			return;
+		}
+		
+		for(int i=0;i<chess.length;i++) {
+			if(isSafe(chess, row, i)) {
+				chess[row][i] = "Q";
+				nQueens(chess, row+1, result);
+				chess[row][i] = ".";
+			}
+		}
+		
+	}
 
 	public static void main(String[] args) {
-		
-		int[][] grid = { {3, 0, 6, 5, 0, 8, 4, 0, 0},
-				{5, 2, 0, 0, 0, 0, 0, 0, 0},
-				{0, 8, 7, 0, 0, 0, 0, 3, 1},
-				{0, 0, 3, 0, 1, 0, 0, 8, 0},
-				{9, 0, 0, 8, 6, 3, 0, 0, 5},
-				{0, 5, 0, 0, 9, 0, 6, 0, 0}, 
-				{1, 3, 0, 0, 0, 0, 2, 5, 0},
-				{0, 0, 0, 0, 0, 0, 0, 7, 4},
-				{0, 0, 5, 2, 0, 6, 3, 0, 0} };
-		
-		if(solveSudoku(grid, 0, 0)) {
-			print(grid);
-		}else {
-			System.out.println("sudoku cannot be solved");
+
+		int n = 1;
+
+		String[][] chess = new String[n][n];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				chess[i][j] = ".";
+			}
 		}
 
+		List<List<String>> result = new ArrayList<>();
+		
+		nQueens(chess, 0, result);
+		
+		for(int i=0;i<result.size();i++) {
+			System.out.println(result.get(i));
+		}
+		
+
 	}
+	
+	
 
 }

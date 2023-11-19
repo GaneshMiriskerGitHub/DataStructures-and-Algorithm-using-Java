@@ -1,0 +1,51 @@
+package package5_BackTracking;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class PP15_Hamilton_Cycle { // Graph
+
+	
+	public static void hamiltonPath(ArrayList<ArrayList<Integer>> Edges, int src, HashSet<Integer> visited, String pathSoFar, int OriginalSrc) {
+		
+		if(visited.size() == Edges.size()-1) {
+			System.out.println(pathSoFar);
+			return;
+		}
+		
+		visited.add(src);
+		for(int i=0;i<Edges.get(src).size();i++) {
+			int neighbour = Edges.get(src).get(i);
+			if(!visited.contains(neighbour)) {
+				hamiltonPath(Edges, neighbour, visited, pathSoFar+neighbour, OriginalSrc);
+			}
+		}
+		visited.remove(src);
+	}
+
+	public static void main(String[] args) {
+
+		int N = 4;
+		int M = 4;
+		int[][] Edges = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 2, 4 } };
+
+		// [][][][][][][]....
+
+		for (int i = 0; i <= N; i++) {
+            listOfLists.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < Edges.length; i++) {
+            int u = Edges[i][0];
+            int v = Edges[i][1];
+            listOfLists.get(u).add(v);
+            listOfLists.get(v).add(u); // Add this line for undirected graph
+        }
+		
+		hamiltonPath(listOFList, 1, new HashSet<>(), "1"+"", 1);
+
+		
+
+	}
+
+}

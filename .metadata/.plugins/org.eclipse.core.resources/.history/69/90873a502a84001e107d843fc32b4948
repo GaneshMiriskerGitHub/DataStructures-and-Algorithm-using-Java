@@ -1,0 +1,50 @@
+package packagee11_Stacks;
+
+import java.util.Stack;
+
+public class P2_Simplify_Path {
+
+	public static String simplifyPath(String path) {
+
+		Stack<String> st = new Stack<>();
+//		st.push("/");
+
+		StringBuilder sb = new StringBuilder("");
+     
+//		/.././///home//foo/
+		for (int i = 0; i < path.length(); i++) {
+			char ch = path.charAt(i);
+			if (ch == '/') {
+				
+				if (sb.toString().equals("..")) {
+					if (!st.isEmpty())
+						st.pop();
+				} else if(!sb.toString().equals(".") ){
+					st.push(sb.toString());
+				}
+				sb = new StringBuilder("");
+			} else {
+				sb.append(ch);
+			}
+		}
+		
+		sb = new StringBuilder("");
+		
+		while(!st.isEmpty()) {
+			sb.insert(0, "/"+st.pop());
+		}
+		
+		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+
+		String path = "/.././///home//foo/";
+
+		String simplifiedPath = simplifyPath(path);
+
+		System.out.println(simplifiedPath);
+
+	}
+
+}

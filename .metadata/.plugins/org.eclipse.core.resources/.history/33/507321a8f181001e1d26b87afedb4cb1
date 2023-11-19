@@ -1,0 +1,19 @@
+package package6_Recursion;
+
+public class P2_Tower_of_Hanoi {
+                                                 // src          helper         dest
+	public static void printCorrectAnswer(int n,    String A,    String B,      String C) {
+		
+		printCorrectAnswer(n-1, A, C, C);
+		
+	}
+
+	public static void main(String[] args) {
+		
+		int n = 3;
+		
+		printCorrectAnswer(n, "A", "B", "C");
+
+	}
+
+}

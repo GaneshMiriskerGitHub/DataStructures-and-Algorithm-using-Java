@@ -1,0 +1,15 @@
+package packagee12_Queue;
+
+public class P1_Implementation_using_Array {
+	
+	static class Queue {
+		
+	}
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

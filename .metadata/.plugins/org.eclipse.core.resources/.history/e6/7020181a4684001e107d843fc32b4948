@@ -1,0 +1,25 @@
+package packagee12_Queue;
+
+public class P1_Implementation_using_Array {
+	
+	static class Queue {
+		
+		static int[] arr;
+		static int size;
+		static int rear;
+		
+		public Queue(int n) {
+			this.arr = new int[n];
+			size = n;
+			rear = -1;
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}
