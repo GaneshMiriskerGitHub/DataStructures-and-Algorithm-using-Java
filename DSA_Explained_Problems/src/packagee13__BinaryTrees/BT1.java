@@ -157,7 +157,7 @@ public class BT1 {
 		System.out.println(tree.heightOfTree(root));
 		System.out.println("Count of nodes in the tree is : ");
 		System.out.println(tree.countNodes(root));
-		System.out.println("sum of all nodes is : ");
+		System.out.println("sum of alll nodes is : ");
 		System.out.println(tree.sumOfNodes(root));
 		
 	}

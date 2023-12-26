@@ -96,13 +96,10 @@ public class A5_Merge_K_Sorted_LinkedList { // https://leetcode.com/problems/mer
 		return newAnotherHead.next;
 	}
 
-	
-
 	public static void main(String[] args) {
-
-		// you can code and test over leetcode
-		// refer to this link :-
-		// https://leetcode.com/problems/merge-k-sorted-lists/description/
+		
+		// you can code and test over leetcode 
+		// refer to this link :- https://leetcode.com/problems/merge-k-sorted-lists/description/
 
 	}
 

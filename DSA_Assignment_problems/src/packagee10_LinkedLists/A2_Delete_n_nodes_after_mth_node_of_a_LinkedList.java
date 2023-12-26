@@ -38,7 +38,6 @@ public class A2_Delete_n_nodes_after_mth_node_of_a_LinkedList {
 			System.out.print(temp.data+" -> ");
 			temp = temp.next;
 		}
-		System.out.println();
 	}
 	
 	public static void delete(int n, int m) { // delete n nodes after mth node
@@ -58,8 +57,6 @@ public class A2_Delete_n_nodes_after_mth_node_of_a_LinkedList {
 		
 	}
 	
-	
-	
 	public static void main(String[] args) {
 		
 		A2_Delete_n_nodes_after_mth_node_of_a_LinkedList list = new A2_Delete_n_nodes_after_mth_node_of_a_LinkedList();
@@ -70,9 +67,7 @@ public class A2_Delete_n_nodes_after_mth_node_of_a_LinkedList {
 		list.addLast(4);
 		list.addLast(5);
 		
-		printLL(head);
-		
-		list.delete(1, 2);
+		list.delete(2, 2);
 		
 		printLL(head);
 		

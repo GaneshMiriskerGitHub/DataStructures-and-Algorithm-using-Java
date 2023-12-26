@@ -4,42 +4,47 @@ import java.util.Arrays;
 
 public class Tester {
 
-	public static void editDistance(String str1, String str2) {
-		
-		int[][] dp = new int[str1.length()+1][str2.length()+1];
-		dp[0][0] = 0;
-		for(int i=1;i<dp.length;i++) {
-			dp[i][0] = i;
+	// Memoization
+	public static int maxSubSequenceMemo(String str1, String str2, int n, int m, int[][] dp) {
+
+		if (n == 0 || m == 0) {
+			return 0;
 		}
-		for(int i=0;i<dp[0].length;i++) {
-			dp[0][1] = i;
+
+		if (dp[n][m] != -1) {
+			return dp[n][m];
 		}
-		int min_op = Integer.MIN_VALUE;
-		// logic
-		for(int i=1;i<dp.length;i++) {
-			for(int j=1;j<dp[i].length;j++) {
-				if(str1.charAt(i-1) == str2.charAt(j-1)) {
-					dp[i][j] = dp[i-1][j-1];
-				}else {
-					// add
-					int add = dp[i-1][j]+1;
-					// remove
-					int remove = dp[i][j-1]+1;
-					// replace
-					int replace = dp[i-1][j-1] + 1;
-					dp[i][j] = Math.min(Math.min(add, remove), replace);
-				}
-			}
+
+		if (str1.charAt(n) == str2.charAt(m)) {
+			return dp[n][m] = 1 + maxSubSequenceMemo(str1, str2, n - 1, m - 1, dp);
+		} else {
+			int choice1 = maxSubSequenceMemo(str1, str2, n - 1, m, dp);
+			int choice2 = maxSubSequenceMemo(str1, str2, n, m - 1, dp);
+			return dp[n][m] = Math.max(choice1, choice2);
 		}
-		
-		System.out.println(dp[str1.length()][str2.length()]);
+
 	}
 
 	public static void main(String[] args) {
-		
-		String str1 = "cat";
-		String str2 = "cut";
 
-		editDistance(str1, str2);
+		String str1 = "abcde"; int n = str1.length();
+		String str2 = "ace";   int m = str2.length();
+		
+		
+		// memoization
+		// Memoization approach
+	    int[][] dp = new int[n + 1][m + 1];
+	    for (int[] row : dp) {
+	        Arrays.fill(row, -1);
+	    }
+	    int memoResult = maxSubSequenceMemo(str1, str2, n - 1, m - 1, dp); // Start with (n-1, m-1) instead of (0, 0)
+	    System.out.println("Memoization LCS Length: " + memoResult);
+
+	    // Print the entire memoization table to verify the values
+	    for (int i = 0; i <= n; i++) {
+	        System.out.println(Arrays.toString(dp[i]));
+	    }
+
 	}
+
 }

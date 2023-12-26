@@ -2,66 +2,65 @@ package package4_Searching_and_Sorting;
 
 import java.util.Collections;
 
-public class PPP22_Minimum_Pages_Alocation { // learning:- https://www.youtube.com/watch?v=BSihvQCh9-I
-												// coding :-
-												// https://www.geeksforgeeks.org/allocate-minimum-number-pages/
-
-	public static int findPages(int[] A, int N, int M) {
-		// Your code here
-
-		if (N < M)
-			return -1;
-
-		int low = maxOf(A);
-		int high = sumOf(A);
-
-		int res = -1;
-
-		while (low <= high) {
-			int mid = low + (high - low) / 2;
-
-			if (ok(A, M, mid)) {
-				res = mid;
-				high = mid - 1;
-			} else {
-				low = mid + 1;
-			}
-		}
-
-		return res;
-
-	}
-
-	public static boolean ok(int[] arr, int noOfStudents, int barrier) {
-		int countOfStudents = 1;
-		int currSum = 0;
-		for (int i = 0; i < arr.length; i++) {
-			currSum += arr[i];
-			if (currSum > barrier) {
-				countOfStudents++;
-				currSum = arr[i];
-			}
-		}
-
-		if (countOfStudents <= noOfStudents) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+public class PPP22_Minimum_Pages_Alocation { // learning:-  https://www.youtube.com/watch?v=BSihvQCh9-I
+						                     // coding  :-  https://www.geeksforgeeks.org/allocate-minimum-number-pages/
 
 	public static int maxOf(int[] arr) {
 		int max = Integer.MIN_VALUE;
-		for (int ele : arr)
-			max = Math.max(max, ele);
+		for (int i = 0; i < arr.length; i++) {
+			max = Math.max(arr[i], max);
+		}
 		return max;
 	}
-
 	public static int sumOf(int[] arr) {
-		int sum = 0;
-		for (int ele : arr)
-			sum += ele;
+		int sum = 0; 
+		for (int i = 0; i < arr.length; i++) {
+			sum+=arr[i];
+		}
 		return sum;
+	}
+	
+	public static boolean isFeasible(int[] arr, int k, int res) {
+		int students = 1;
+		int currSum = 0;
+		for(int i=0;i<arr.length;i++) {
+			currSum+=arr[i];
+			if(currSum > res) {
+				students++;
+				currSum = arr[i];
+			}
+		}
+		return students <= k;
+	}
+
+	public static void printMinimumNumberOfAllocations(int[] arr, int k) {
+
+		int min = maxOf(arr);
+		int max = sumOf(arr);
+		
+		int res = 0;
+		while(min <= max) {
+			int mid = (min+max)/2;
+			
+			if(isFeasible(arr, k, mid)) {
+				res = mid;
+				max = mid-1;
+			}else {
+				min = mid+1;
+			}
+		}
+
+		System.out.println(res);
+	}
+
+	public static void main(String[] args) {
+
+		int N = 4;
+		int[] A = { 12, 34, 67, 90 };
+		int M = 2;
+
+		printMinimumNumberOfAllocations(A, M);
+
 	}
 
 }

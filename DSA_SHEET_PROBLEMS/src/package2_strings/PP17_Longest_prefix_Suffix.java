@@ -4,29 +4,35 @@ public class PP17_Longest_prefix_Suffix {
 	
 	// 1. Solved on leetcode - hard question
 	// Resources :-
-	// https://www.youtube.com/watch?v=JoF0Z7nVSrA
+	// 1. youtube:- https://www.youtube.com/watch?v=V5-7GzOfADQ
+	// 2. youtube:- https://www.youtube.com/watch?v=3_iycwSZvKo
+	// 3. Leetcode:- submissions, below code only 
 
 	
-	public static int longesPrefixSufix(String s) {   // O(n+m)
-		if(s.isEmpty()) return 0;
-        // building lps[] values
-        int[] lps = new int[s.length()];
+	public static String longesPrefixSufix(String s) {   // O(n+m)
+        int n = s.length();
+
+        int i = 1;
+        int len = 0;
+        int[] lps = new int[n];
         lps[0] = 0;
-        int i=1;
-        int prevLPS = lps[0];
-        while(i<s.length()) {
-            if(s.charAt(i) == s.charAt(prevLPS)) {
-                lps[i] = ++prevLPS;
-                i++;
-            }else if(prevLPS == 0) {
-                lps[i] = 0;
+
+        while(i < n){
+            if(s.charAt(len) == s.charAt(i)){
+                len++;
+                lps[i] = len;
                 i++;
             }else{
-                prevLPS = lps[prevLPS-1];
-            } 
+                if(len != 0){
+                    len = lps[len-1];
+                }else{
+                    lps[i] = 0;
+                    i++;
+                }
+            }
         }
-        
-        return lps[s.length()-1];
+
+        return s.substring(0, lps[n-1]);
 	}
 	
 

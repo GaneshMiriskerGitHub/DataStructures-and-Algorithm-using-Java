@@ -59,28 +59,6 @@ public class A3_Swapping_nodes_in_a_LinkedList {
 		temp2.data = temp1Data;
 		
 	}
-	
-	
-	public static void swapLinkedList(int n, int m) {
-		Node temp1 = head;
-		Node temp2 = head;
-		
-		int i=1;
-		while(i<=n) {
-			temp1 = temp1.next;
-			i++;
-		}
-		
-		i=1;
-		while(i<=m) {
-			temp2 = temp2.next;
-			i++;
-		}
-		
-		int tempData = temp1.data;
-		temp1.data = temp2.data;
-		temp2.data = tempData;
-	}
 
 	public static void main(String[] args) {
 		
@@ -94,7 +72,7 @@ public class A3_Swapping_nodes_in_a_LinkedList {
 		
 		printLL(head);
 		
-		list.swapLinkedList(0, 3);System.out.println();
+		list.swap(2, 3);System.out.println();
 		
 		printLL(head);
 

@@ -14,7 +14,6 @@ public class P2_LinkedList_Cycle {
 		}
 	}
 	
-	
 	public static boolean hasCycle(Node head) {
 		Node slow = head;
 		Node fast = head;

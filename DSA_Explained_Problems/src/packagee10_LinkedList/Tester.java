@@ -1,205 +1,107 @@
 package packagee10_LinkedList;
 
-import packagee10_LinkedList.LL1.Node;
-
 public class Tester {
 
-	static class Node {
-		int data;
-		Node next;
-		
-		public Node(int data) {
-			this.data = data;
-			this.next = null;
+	public static class ListNode {
+		int val;
+		ListNode next;
+
+		ListNode() {
+		}
+
+		ListNode(int val) {
+			this.val = val;
+		}
+
+		ListNode(int val, ListNode next) {
+			this.val = val;
+			this.next = next;
 		}
 	}
-	
-	static Node head;
-	static Node tail;
-	static int sz;
-	
-	public static void addFirst(int data) {
-		Node newNode = new Node(data);
-		if(head == null) {
-			head = tail = newNode;
-			sz++;
-			return;
+
+	public static ListNode mergeSort(ListNode head) {
+
+		if (head == null || head.next == null) {
+			return head;
 		}
-		newNode.next = head;
-		head = newNode;
-		sz++;
-	}
-	
-	public static void addLast(int data) {
-		Node newNode = new Node(data);
-		if(head == null) {
-			head = tail = newNode;
-			sz++;
-			return;
-		}
-		tail.next = newNode;
-		tail = newNode;
-		sz++;
-	}
-	
-	public static void printLL(Node head) {
-		if(head == null) {
-			System.out.println("list is empty");
-		}else {
-			Node temp = head;
-			while(temp != null) {
-				System.out.print(temp.data+"->");
-				temp = temp.next;
-			}
-		}
-	}
-	
-	public static void add(int idx, int data) {
-		if(idx == 0) {
-			addFirst(data);
-			sz++;
-			return;
-		}
-		if(idx == sz) {
-			addLast(data);
-			sz++;
-			return;
-		}
-		int i = 0;
-		Node temp = head;
-		while(i<idx-1) {
-			temp = temp.next;
-			i++;
-		}
-		
-		Node newNode = new Node(data);
-		
-		newNode.next = temp.next;
-		temp.next = newNode;
-		sz++;
-	}
-	
-	public static int removeFirst() {
-		if(head == null) {
-			System.out.println("list is empty");
-		}
-		if(sz == 1) {
-			head = tail = null;
-			return Integer.MAX_VALUE;
-		}
-		int val = head.data;
-		head = head.next;
-		sz--;
-		return val;
-	}
-	
-	public static int removeLast() {
-		if(head == null) {
-			System.out.println("list is empty");
-		}
-		if(sz == 1) {
-			head = tail = null;
-			return Integer.MAX_VALUE;
-		}
-		
-		Node temp = head;
-		int i = 0;
-		while(i<sz-2) {
-			temp = temp.next;
-			i++;
-		}
-		
-		int val = temp.data;
-		temp.next = null;
-		
-		tail = temp;
-		sz--;
-		
-		return val;
-	}
-	
-	public static void reverseLL() {
-		
-		Node prev = null;
-		Node curr = head ;
-		Node next;
-		
-		while(curr != null) {
-			next = curr.next;
-			curr.next = prev;
-			prev = curr;
-			curr = next;
-		}
-		
-		head = prev;
-		
-	}
-	
-	public static Node findMid(Node head) {
-		Node slow = head;
-		Node fast = head;
-		
-		while(fast != null && fast.next != null) {
+
+		// find mid
+		ListNode slow = head;
+		ListNode fast = head.next;
+		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 		}
-		
-		return slow;
+
+		ListNode midNode = slow;
+		ListNode rightHalf = mergeSort(midNode.next);
+		midNode.next = null;
+		ListNode leftHalf = mergeSort(head);
+
+		return merge(leftHalf, rightHalf);
+
 	}
-	
-	
-	public static boolean isPalindrome() {
-		if(head == null || head.next == null) {
-			return true;
-		}
-		
-		Node midNode = findMid(head);
-		
-		Node prev = null;
-		Node curr = midNode;
-		Node next;
-		while(curr != null) {
-			next = curr.next;
-			curr.next = prev;
-			prev = curr;
-			curr = next;
-		}
-		
-		Node left = head;
-		Node right = prev;
-		
-		while(right != null) {
-			if(left.data != right.data) {
-				return false;
+
+	public static ListNode merge(ListNode leftNode, ListNode rightNode) {
+		ListNode mergedLL = new ListNode(-1);
+		ListNode temp = mergedLL;
+
+		while (leftNode != null && rightNode != null) {
+			if (leftNode.val <= rightNode.val) {
+				temp.next = leftNode;
+				temp = temp.next;
+				leftNode = leftNode.next;
+			} else {
+				temp.next = rightNode;
+				temp = temp.next;
+				rightNode = rightNode.next;
 			}
-			left = left.next;
-			right = right.next;
 		}
-		
-		return true;
+
+		while (leftNode != null) {
+
+			temp.next = leftNode;
+			temp = temp.next;
+			leftNode = leftNode.next;
+
+		}
+
+		while (rightNode != null) {
+
+			temp.next = rightNode;
+			temp = temp.next;
+			rightNode = rightNode.next;
+
+		}
+
+		return mergedLL.next;
+	}
+
+	public ListNode mergeKLists(ListNode[] lists) {
+
+		ListNode newHead = new ListNode(-1);
+		ListNode newIterator = newHead;
+
+		for (int i = 0; i < lists.length; i++) {
+
+			ListNode head = lists[i];
+
+			ListNode temp = head;
+			while (temp != null) {
+				newIterator.next = temp;
+				newIterator = newIterator.next;
+				temp = temp.next;
+			}
+
+		}
+
+		newHead.next = mergeSort(newHead.next);
+
+		return newHead.next;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		Tester ll = new Tester();
-		
-//		ll.addFirst(1);
-//		ll.addLast(4);
-//		
-//		ll.add(1, 2);
-//		ll.add(2, 3);
-//		
-//		ll.printLL(head);
-		
-	
-		
-//		
-//		ll.reverseLL();System.out.println();
-//		
-//		ll.printLL(head);
-		
-		System.out.println(ll.isPalindrome());
 
 	}
 

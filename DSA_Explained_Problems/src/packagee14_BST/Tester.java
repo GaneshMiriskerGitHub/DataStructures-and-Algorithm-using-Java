@@ -1,98 +1,59 @@
 package packagee14_BST;
 
 public class Tester {
-
+	
 	static class Node {
 		int data;
 		Node left;
 		Node right;
-
+		
 		public Node(int data) {
 			this.data = data;
 			this.left = null;
 			this.right = null;
 		}
 	}
-
-	public static Node delete(Node root, int val) {
-		if (val < root.data) {
-			root.left = delete(root.left, val);
-		} else if (root.data > val) {
-			root.right = delete(root.right, val);
-		} else {
-			//
-			if (root.left == null && root.right == null) {
-				return null;
-			}
-			//
-			if (root.left == null) {
-				return root.right;
-			} else if (root.right == null) {
-				return root.left;
-			}
-			//
-			Node IS = findInOrderSuccessor(root.right); // finding min value on right side
-			root.data = IS.data;
-			root.right = delete(root.right, IS.data);
-
-		}
-
-		return root;
-	}
-
-	public static Node findInOrderSuccessor(Node root) {
-		if (root.left == null) {
+	
+	public static Node insert(Node root, int value) {
+		if(root == null) {
+			root = new Node(value);
 			return root;
 		}
-		return findInOrderSuccessor(root.left);
-	}
-
-	static class Info {
-		boolean isBST;
-		int size;
-		int max;
-		int min;
-
-		public Info(boolean isBST, int size, int min, int max) {
-			this.isBST = isBST;
-			this.size = size;
-			this.max = max;
-			this.min = min;
+		
+		if(value < root.data) {
+			root.left = insert(root.left, value);
+		}else {
+			root.right = insert(root.right, value);
 		}
+		
+		return root;
 	}
-
-	public static Info largestBST_in_BT(Node root) {
+	
+	
+	public static Node buildBST(int[] arr) {
+		
+		Node root = null ;
+		for(int i=0;i<arr.length;i++) {
+			root = insert(root, arr[i]);
+		}
+		
+		return root;
+	}
+	
+	public static void inOrder(Node root) {
 		if(root == null) {
-			return new Info(true, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
+			return;
 		}
 		
-		if(root.left == null && root.right == null) {
-			return new Info(true, 1, root.data, root.data);
-		}
-		
-		Info leftInfo = largestBST_in_BT(root.left);
-		Info rightInfo = largestBST_in_BT(root.right);
-		
-		boolean isBST = leftInfo.isBST && rightInfo.isBST;
-		int size = Math.max(leftInfo.size, rightInfo.size) + 1;
-		int min = Math.min(root.data, Math.min(leftInfo.min, rightInfo.min));
-		int max = Math.min(root.data, Math.max(leftInfo.max, rightInfo.max));
-		
-		if(root.data <= leftInfo.max && root.data >= rightInfo.min) {
-			return new Info(false, size, min, max);
-		}
-		
-		if(leftInfo.isBST && rightInfo.isBST) {
-			return new Info(true, size, min, max);
-		}
-		
-		return new Info(false, size, min, max);
+		inOrder(root.left);
+		System.out.print(root.data+ " ");
+		inOrder(root.right);
 	}
 
 	public static void main(String[] args) {
 		
 		
-
+		
 	}
 
 }

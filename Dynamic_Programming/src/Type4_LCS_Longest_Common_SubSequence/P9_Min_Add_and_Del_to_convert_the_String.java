@@ -29,8 +29,8 @@ public class P9_Min_Add_and_Del_to_convert_the_String {  // explanation :- https
 	
 	public static void main(String[] args) {
 		
-		String str1 = "ABD";
-		String str2 = "BAD";
+		String str1 = "abcd";
+		String str2 = "anc";
 		
 		int lcsLength = lcs(str1, str2);
 		

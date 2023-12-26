@@ -33,6 +33,8 @@ public class P1_MCM_min_cost {
 			return memo[i][j];
 		}
 		
+		
+
 		int ans = Integer.MAX_VALUE;
 
 		for (int k = i; k <= j - 1; k++) {

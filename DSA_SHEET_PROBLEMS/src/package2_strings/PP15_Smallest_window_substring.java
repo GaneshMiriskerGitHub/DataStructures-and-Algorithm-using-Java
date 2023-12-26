@@ -113,8 +113,8 @@ public class PP15_Smallest_window_substring {
 
 	public static void main(String[] args) {
 
-		String s = "this is a test string";
-		String t = "tist";
+		String s = "timetopractice";
+		String t = "toc";
 
 		System.out.println(leetcode(s, t));
 		System.out.println(smallestWindow(s, t));

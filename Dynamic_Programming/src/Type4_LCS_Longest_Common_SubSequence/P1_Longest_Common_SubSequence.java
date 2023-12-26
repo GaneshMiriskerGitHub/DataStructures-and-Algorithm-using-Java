@@ -28,40 +28,16 @@ public class P1_Longest_Common_SubSequence {
 			dp[n][m] = 0;
 			return dp[n][m];
 		}
-		
-		if(dp[n][m] != -1) return dp[n][m];
 
 		if(str1.charAt(n-1) == str2.charAt(m-1)) {
-			int ans = 1 + maxSubSequenceMemo(str1, str2, n-1, m-1, dp);
-			return dp[n][m] = ans;
+			int ans = 1 + maxSubSequence(str1, str2, n-1, m-1);
+			return ans;
 		}else {
-			int choice1 = maxSubSequenceMemo(str1, str2, n-1, m, dp);
-			int choice2 = maxSubSequenceMemo(str1, str2, n, m-1, dp);
-			return dp[n][m] = Math.max(choice1, choice2);
+			int choice1 = maxSubSequence(str1, str2, n-1, m);
+			int choice2 = maxSubSequence(str1, str2, n, m-1);
+			return Math.max(choice1, choice2);
 		}
 		
-	}
-	
-	public static int maxSubSequenceMemo2(String str1, String str2, int n, int m, int[][] memo) {
-
-		if (n == 0 || m == 0) {
-			return memo[n][m] = 0;
-		}
-
-		if (memo[n][m] != -1) {
-			return memo[n][m];
-		}
-
-		if (str1.charAt(n - 1) == str2.charAt(m - 1)) {
-			memo[n][m] = maxSubSequenceMemo2(str1, str2, n - 1, m - 1, memo) + 1;
-			return memo[n][m];
-		} else {
-			int res1 = maxSubSequenceMemo2(str1, str2, n - 1, m, memo);
-			int res2 = maxSubSequenceMemo2(str1, str2, n, m - 1, memo);
-			memo[n][m] = Math.max(res1, res2);
-			return memo[n][m];
-		}
-
 	}
 	
 	// Tabulation

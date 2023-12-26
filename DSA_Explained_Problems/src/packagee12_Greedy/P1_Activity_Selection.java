@@ -17,7 +17,7 @@ public class P1_Activity_Selection {
 			activites[i][2] = end[i];
 		}
 		
-		Arrays.sort(activites, Comparator.comparingInt(o -> o[2]));
+		Arrays.sort(activites, Comparator.comparingDouble(o -> o[2]));
 		
 		List<String> list = new LinkedList<>();
 		
@@ -38,8 +38,10 @@ public class P1_Activity_Selection {
 
 	public static void main(String[] args) {
 		
-		int[] start = {1, 3, 2, 5};
-		int[] end = {2, 4, 3, 6};
+
+		
+		int[] start = {1, 3, 0, 5, 8, 5};
+		int[] end = {2, 4, 6, 7, 9, 9};
 		
 		maxActivities(start, end);
 

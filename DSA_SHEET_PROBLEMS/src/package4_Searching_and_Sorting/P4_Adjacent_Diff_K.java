@@ -1,6 +1,6 @@
 package package4_Searching_and_Sorting;
 
-public class P4_Adjacent_Diff_K {  // Find the first occuring element which has difference of itself & left and itself & right is <= k
+public class P4_Adjacent_Diff_K {  // Find the fisrt occuring element which has difference of left and right is <= k
 	
 	public static int search(int[] arr, int n, int x, int k) {
 		

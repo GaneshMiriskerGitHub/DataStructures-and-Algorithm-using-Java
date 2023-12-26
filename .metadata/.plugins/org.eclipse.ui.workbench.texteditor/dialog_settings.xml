@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="validBST"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
-		<item key="casesensitive" value="true"/>
+		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="validBST"/>
-			<item value="serialKey"/>
-			<item value="duplicateSubtrees"/>
-			<item value="subtreeCount"/>
-			<item value="serializeSubtree"/>
-			<item value="stack"/>
-			<item value="Stack"/>
-			<item value="st"/>
-			<item value="sb"/>
-			<item value="llist."/>
-			<item value="private"/>
-			<item value="public"/>
 			<item value="mirror"/>
 			<item value="inver"/>
 			<item value=".val"/>
+			<item value="maxSum"/>
+			<item value="tree."/>
+			<item value="node"/>
+			<item value="val"/>
+			<item value="ListNode"/>
+			<item value="list.add("/>
+			<item value="&quot;"/>
+			<item value="]"/>
+			<item value="["/>
 		</list>
 		<list key="replacehistory">
-			<item value="str"/>
-			<item value="list"/>
-			<item value="map"/>
-			<item value="preOrder"/>
-			<item value="st"/>
-			<item value="stack"/>
-			<item value="curr"/>
-			<item value=" "/>
-			<item value="private static"/>
-			<item value="public static"/>
 			<item value=".data"/>
 			<item value="data"/>
 			<item value=""/>
+			<item value=" "/>
 			<item value="Node"/>
 			<item value="&apos;"/>
+			<item value="}"/>
+			<item value="{"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
@@ -48,9 +38,5 @@
 		<item key="DIALOG_WIDTH" value="511"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
-	</section>
-	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="567"/>
-		<item key="DIALOG_Y_ORIGIN" value="308"/>
 	</section>
 </section>
