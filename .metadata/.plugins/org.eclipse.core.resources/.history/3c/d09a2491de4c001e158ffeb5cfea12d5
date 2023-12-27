@@ -1,0 +1,40 @@
+package packagee18_Graphs;
+
+import java.util.ArrayList;
+
+public class PPP20_Krushkals_Algorithm {
+	
+	static class Edge implements Comparable<Edge>{
+		int src;
+		int des;
+		int wt;
+		
+		public Edge(int s, int d, int w) {
+			this.src = s;
+			this.des = d;
+			this.wt = w;
+		}
+
+		@Override
+		public int compareTo(Edge o) {
+			return this.wt - o.wt;
+		}
+	}
+	
+	public static void createGraph(ArrayList<Edge> edges) {
+		// edges
+		edges.add(new Edge());
+		edges.add(new Edge());
+	}
+	
+	public static int krushkal(ArrayList<Edge> graph) {
+		
+	}
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,48 @@
+package package5_BackTracking;
+
+public class MaximumNumberWithKSwaps {
+
+
+   
+
+public class PP17_Maximum_Number_with_K_swaps { // idoka moggalo questionu adi malli solve kuda cheyyala ?
+	                                            // answer :- just send the maximum number to first position
+	                                            // source chatGPT , solution above
+
+	public static String findMaximumNumber(String number, int k) {
+		if( k == 0 || number.length() <= 0 ) {
+			return number;
+		}
+		
+		char[] arr = number.toCharArray();
+		
+		char maxDigit = arr[0];
+		int maxIndex = 0;
+		for(int i=1;i<arr.length;i++) {
+			if(arr[i] > maxDigit) {
+				maxDigit = arr[i];
+				maxIndex = i;
+			}
+		}
+		
+		if(arr[0]!= maxDigit) {
+			char temp = arr[0];
+			arr[0] = maxDigit;
+			arr[maxIndex] = temp;
+		}
+		
+		String remainingDigits = new String(arr,1,arr.length-1);
+		String maxRemaining = findMaximumNumber(remainingDigits, k-1);
+		return arr[0]+maxRemaining;
+	}
+	
+	public static void main(String[] args) {
+		
+		int M = 1234;
+		int k = 2;
+		
+		System.out.println(findMaximumNumber(String.valueOf(M), k));
+
+	}
+
+}

@@ -1,0 +1,38 @@
+package package6_LinkedList;
+
+public class P4_Delete_without_head_node {
+	
+	static class Node {
+		int data;
+		Node next;
+		
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
+		}
+	}
+	
+	public static Node compute(Node head)
+    {
+        Node temp = head;
+        
+        while(temp != null) {
+        	Node curr = temp;
+        	
+        	boolean shouldDelete = false;
+        	while(temp.data < curr.next.data) {
+        		curr = curr.next;
+        	}
+        	
+        	
+        }
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+
+	}
+
+}

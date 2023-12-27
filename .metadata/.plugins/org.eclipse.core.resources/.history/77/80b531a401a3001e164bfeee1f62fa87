@@ -1,0 +1,55 @@
+package packagee18_Graphs;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import packagee19_Graphs.PPP24_Articulation_point.Edge;
+
+public class Tester {
+
+
+	public static void dfs(ArrayList<ArrayList<Integer>> adj, int curr, int time, boolean[] vis, int[] dt, int[] low, int par) {
+
+		vis[curr] = true;
+
+		dt[curr] = low[curr] = ++time;
+
+		for (Integer e : adj.get(curr)) {
+			int des = e;
+			if (des == par) {
+				continue;
+			} else if (!vis[des]) {
+				dfs(adj, des, time, vis, dt, low, curr);
+				low[curr] = Math.min(low[curr], low[des]);
+				if (dt[curr] < low[des]) {
+					System.out.println(curr);
+				}
+			} else {
+				low[curr] = Math.min(low[curr], dt[des]);
+			}
+		}
+
+	}
+
+
+	public static void printArticulationPoint(ArrayList<ArrayList<Integer>> adj, int V) {
+
+		int[] dt = new int[V];
+		int[] low = new int[V];
+
+		boolean[] vis = new boolean[V];
+		int time = 0;
+
+		for (int i = 0; i < V; i++) {
+			if (!vis[i]) {
+				dfs(adj, i, time, vis, dt, low, -1);
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

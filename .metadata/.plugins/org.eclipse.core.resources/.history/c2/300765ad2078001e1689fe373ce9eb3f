@@ -1,0 +1,38 @@
+package package5_BackTracking;
+
+
+
+public class PP17_Maximum_Number_with_K_swaps { 
+	
+	static int max_number = Integer.MIN_VALUE;
+
+	public static String findMaximumNumber(String str, int k) {
+		
+		if(k == 0) {
+			if(max_number > Integer.parseInt(str)) {
+				max_number = Integer.parseInt(str);
+				return max_number;
+			}
+		}
+		
+		
+		for(int i=0;i<str.length();i++) {
+			for(int j=i+1;j<str.length();j++) {
+				str = swap(str, i, j);
+				findMaximumNumber(str, k-1);
+				str = swap(str, i, j);
+			}
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		int M = 1234;
+		int k = 2;
+		
+		System.out.println(findMaximumNumber(String.valueOf(M), k));
+
+	}
+
+}

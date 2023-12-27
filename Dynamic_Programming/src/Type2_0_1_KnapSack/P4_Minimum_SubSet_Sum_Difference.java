@@ -1,0 +1,105 @@
+package Type2_0_1_KnapSack;
+
+import java.util.Arrays;
+
+/*
+ * divide the given array in two parts in any order : in such a way that, the difference between 
+ * both their sum should be minimum
+ */
+
+public class P4_Minimum_SubSet_Sum_Difference { // don't waste time 2 days busted
+
+	// Also known as Minimum Partition
+	
+	// submission link :- https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+	// submission link :- leetcode won't accept https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+	
+	
+	/*
+	 * Explanation:- 
+	 * if we take total arr sum sa target
+	 * and copy paste the previous code
+	 * we will get the dp[][] array generated
+	 * 
+	 * in the last row of the dp array says that
+	 * it says for which which target "j" subset is possible
+	 * 
+	 * so to find the answer
+	 * we need to take s1 = all possible targets
+	 * for             s2 = sum - s1
+	 *                 diff = s1 - s2
+	 *                 ans = Math.min(ans, diff);
+	 * 
+	 */
+
+	public static int minimumPartition(int[] arr) {
+		
+		int sum = Arrays.stream(arr).sum();
+		
+		int target = sum;
+		
+		boolean[][] dp = new boolean[arr.length + 1][target + 1];
+		for (int i = 0; i < dp.length; i++) {
+			dp[i][0] = true;
+		}
+
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j < dp[i].length; j++) {
+				// include
+				if (arr[i - 1] <= j) {
+					boolean include = dp[i - 1][j - arr[i - 1]];
+					boolean exlude = dp[i - 1][j];
+					dp[i][j] = include || exlude;
+				} else {
+					boolean exlude = dp[i - 1][j];
+					dp[i][j] = exlude;
+				}
+			}
+		}
+		
+		int min = Integer.MAX_VALUE;
+		for(int i=0;i<dp[dp.length-1].length;i++) {
+			if(dp[dp.length-1][i] == true) {
+				int s1 = i;
+				int s2 = sum - s1;
+				min = Math.min(min, Math.abs(s1-s2));
+			}
+		}
+		
+		return min;
+	}
+	
+	// Tabulation
+	public static boolean subSetTabulation(int[] arr, int target) {
+
+		boolean[][] dp = new boolean[arr.length + 1][target + 1];
+		for (int i = 0; i < dp.length; i++) {
+			dp[i][0] = true;
+		}
+
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j < dp[i].length; j++) {
+				// include
+				if (arr[i - 1] <= j) {
+					boolean include = dp[i - 1][j - arr[i - 1]];
+					boolean exlude = dp[i - 1][j];
+					dp[i][j] = include || exlude;
+				} else {
+					boolean exlude = dp[i - 1][j];
+					dp[i][j] = exlude;
+				}
+			}
+		}
+
+		return dp[arr.length][target];
+	}
+
+	public static void main(String[] args) {
+
+		int arr[] = { 3, 1 };
+
+		System.out.println(minimumPartition(arr));
+
+	}
+
+}

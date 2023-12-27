@@ -1,0 +1,16 @@
+package package1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		
+		int n = 5;
+		
+		System.out.println(n%2==0);
+
+	}
+
+}

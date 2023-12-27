@@ -1,0 +1,15 @@
+package package9_ArrayList;
+
+import java.util.List;
+
+public class P1_Container_with_most_water {
+
+	public static void main(String[] args) {
+		
+		List<Integer> list = List.of(1,8,6,2,5,4,8,3,7);
+		
+		list.forEach(System.out::println);
+
+	}
+
+}

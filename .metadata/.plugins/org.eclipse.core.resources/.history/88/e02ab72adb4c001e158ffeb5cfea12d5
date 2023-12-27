@@ -1,0 +1,46 @@
+package packagee18_Graphs;
+
+public class PP19_Dijoint_Set {
+	
+	public static int findParent(int n, int[] parent) {
+		if(n == parent[n]) {
+			return n;
+		}
+		
+		return findParent(parent[n], parent);
+	}
+	
+	public static void union(int a, int b, int[] parent, int[] rank) {
+		int parentOfA = findParent(a, parent);
+		int parentOfB = findParent(b, parent);
+		
+		if(rank[parentOfA] == rank[parentOfB]) {
+			parent[parentOfB] = parentOfA;     // basically making A as parent:  par[B] = A;
+			rank[parentOfA]++;       // rank of A ++;
+		}else if(rank[parentOfA] > rank[parentOfB]) {
+			parent[parentOfB] = parentOfA;
+		}else {
+			parent[parentOfA] = parentOfB;
+		}
+	}
+
+	public static void main(String[] args) {
+	
+		int n = 7;
+		
+		int[] parent = new int[n];
+		for(int i=0;i<n;i++) {
+			parent[i] = i;
+		}
+		int[] rank = new int[n];
+		
+		union(1, 3, parent, rank);
+		union(2, 4, parent, rank);
+		union(3, 6, parent, rank);
+		union(1, 4, parent, rank);
+		union(1, 5, parent, rank);
+		
+
+	}
+
+}

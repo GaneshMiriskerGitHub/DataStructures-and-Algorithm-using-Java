@@ -1,0 +1,15 @@
+package package9_ArrayList;
+
+/*
+ * an array is monotonic if it is in asc or desc in order
+ */
+
+public class P1_Monotonic_ArrayList {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

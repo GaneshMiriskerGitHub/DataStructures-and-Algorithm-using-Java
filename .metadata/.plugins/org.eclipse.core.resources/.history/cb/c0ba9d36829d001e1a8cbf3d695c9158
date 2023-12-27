@@ -1,0 +1,33 @@
+package Type4_LCS_Longest_Common_SubSequence;
+
+import java.util.Arrays;
+
+public class Tester {
+	
+	public static int Lic(int[] arr) {
+		
+		int[] arr2 = Arrays.copyOfRange(arr, 0, arr.length-1);
+		
+		Arrays.sort(arr2);
+		
+		return lcs(arr, arr2);
+		
+	}
+	
+	public static int lcs(int[] arr1, int[] arr2) {
+		
+	}
+
+
+	public static void main(String[] args) {
+		
+		
+		int[] arr = {50, 3, 10, 7, 40, 80};
+		
+		
+		System.out.println(Lic(arr));
+		
+		
+	}
+}
+ 

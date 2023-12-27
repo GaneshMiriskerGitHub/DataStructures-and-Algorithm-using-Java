@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;packagee18_Graphs.PP23_SCC_KosarajuAlgo&apos; to &apos;PPP23_SCC_KosarajuAlgo&apos;&#x0D;&#x0A;- Original project: &apos;DSA_Explained_Problems&apos;&#x0D;&#x0A;- Original element: &apos;packagee18_Graphs.PP23_SCC_KosarajuAlgo&apos;&#x0D;&#x0A;- Renamed element: &apos;packagee18_Graphs.PPP23_SCC_KosarajuAlgo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;PP23_SCC_KosarajuAlgo&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;packagee18_Graphs{PP23_SCC_KosarajuAlgo.java[PP23_SCC_KosarajuAlgo" matchStrategy="1" name="PPP23_SCC_KosarajuAlgo" qualified="false" references="true" similarDeclarations="false" stamp="1701523731807" textual="false" version="1.0"/>
+</session>

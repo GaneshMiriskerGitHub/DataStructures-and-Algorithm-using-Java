@@ -1,0 +1,14 @@
+package package9_ArrayList;
+
+public class P3_Most_Frequent_Element_Following_Key_in_Array {
+
+	public static void main(String[] args) {
+		
+		int[] arr = {1,100,200,1,100};
+		int key = 1;
+		
+		
+
+	}
+
+}

@@ -1,0 +1,67 @@
+package Type1_Fibbonacci;
+
+import java.util.Arrays;
+
+public class Tester {
+
+	/*
+	 * for recursion and memoization :- https://www.youtube.com/watch?v=Y0lT9Fck7qI
+	 * 
+	 * for tabulation:- apna college
+	 */
+
+	public static boolean print(int[] arr, int start, boolean[] dp) {
+
+		if (arr[start] == 0) {
+			return true;
+		}
+
+		if (dp[start] != false) {
+			return dp[start];
+		}
+
+		boolean leftPossible = false;
+		if (start - arr[start] >= 0) {
+			leftPossible = print(arr, start - arr[start], dp);
+		}
+
+		boolean rightPossible = false;
+		if (start + arr[start] <= arr.length - 1) {
+			rightPossible = print(arr, start + arr[start], dp);
+		}
+
+		dp[start] = leftPossible || rightPossible;
+
+		return dp[start];
+	}
+
+	private boolean canReachHelper(int[] arr, int start, boolean[] visited) {
+		if (start < 0 || start >= arr.length || visited[start]) {
+			return false;
+		}
+
+		if (arr[start] == 0) {
+			return true;
+		}
+
+		visited[start] = true;
+
+		boolean leftPossible = canReachHelper(arr, start - arr[start], visited);
+		boolean rightPossible = canReachHelper(arr, start + arr[start], visited);
+
+		return leftPossible || rightPossible;
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 3, 0, 2, 1, 2 };
+
+		int start = 2;
+
+		boolean[] dp = new boolean[arr.length];
+
+		System.out.println(print(arr, start, dp));
+
+	}
+
+}

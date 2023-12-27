@@ -1,0 +1,77 @@
+package packagee18_Graphs;
+
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+public class Tester {
+
+	static class Edge {
+		int s;
+		int d;
+		int wt;
+
+		public Edge(int s, int d, int wt) {
+			this.s = s;
+			this.d = d;
+			this.wt = wt;
+		}
+	}
+
+	static class Info implements Comparable<Info> {
+		int des;
+		int wt;
+
+		public Info(int des, int wt) {
+			this.des = des;
+			this.wt = wt;
+		}
+
+		@Override
+		public int compareTo(Info o) {
+			return this.wt - o.wt;
+		}
+	}
+
+	static int spanningTree(int V, int E, int edges[][]) {
+		// Code Here.
+		ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
+
+		for (int i = 0; i < V; i++) {
+			graph.add(new ArrayList<>());
+		}
+
+		for (int i = 0; i < edges.length; i++) {
+			graph.get(edges[i][0]).add(new Edge(edges[i][0], edges[i][1], edges[i][2]));
+			graph.get(edges[i][1]).add(new Edge(edges[i][1], edges[i][0], edges[i][2]));
+		}
+
+		boolean[] vis = new boolean[V];
+		int ans = 0;
+		PriorityQueue<Info> pq = new PriorityQueue<>();
+		pq.add(new Info(0, 0));
+
+		while (!pq.isEmpty()) {
+			Info curr = pq.remove();
+			if (vis[curr.des]) {
+				continue;
+			}
+			vis[curr.des] = true;
+			for (Edge e : graph.get(curr.des)) {
+				if (!vis[e.d]) {
+					pq.add(new Info(e.d, e.wt));
+				}
+			}
+
+		}
+
+		return ans;
+	}
+
+	public static void main(String[] args) {
+		int[][] edges = { { 0, 1, 5 }, { 1, 2, 3 }, { 0, 2, 1 } };
+
+		System.out.println(spanningTree(edges.length, 0, edges));
+
+	}
+
+}

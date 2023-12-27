@@ -1,0 +1,42 @@
+package Type4_LCS_Longest_Common_SubSequence;
+
+import java.util.Arrays;
+
+public class Tester {
+	
+	public static int maxSubSequenceTabulation(String str1, String str2) {
+		
+		int[][] dp = new int[str1.length()+1][str2.length()+1];
+		
+		for(int i=1;i<str1.length()+1;i++) {
+			for(int j=1;j<str2.length()+1;j++) {
+				if(i == 0 && j == 0) {
+					if(str1.charAt(i) == str2.length()) {
+						dp[0][0] = 1;
+						continue;
+					}
+				}
+				if(str1.charAt(i) == str2.charAt(j)) {
+					dp[i][j] = 1 + dp[i-1][j-1];
+				}
+			}
+		}
+		
+		return dp[str1.length()][str2.length()];
+		
+	}
+
+
+	public static void main(String[] args) {
+		
+		
+		String str1 = "abcde"; int n = str1.length();
+		String str2 = "ace";   int m = str2.length();
+		
+		// Tabulation
+		System.out.println(maxSubSequenceTabulation(str1, str2));
+		
+		
+	}
+}
+ 

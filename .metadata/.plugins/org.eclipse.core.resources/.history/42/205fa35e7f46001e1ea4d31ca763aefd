@@ -1,0 +1,20 @@
+package packagee18_Graphs;
+
+public class P8_Bipartie_Graph {
+	
+	static class Edge {
+		int src;
+		int des;
+
+		public Edge(int src, int des) {
+			this.src = src;
+			this.des = des;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

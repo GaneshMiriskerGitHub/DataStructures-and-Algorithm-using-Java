@@ -1,0 +1,56 @@
+package package5_BackTracking;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class PP15_Hamilton_Cycle {
+
+    static class Edge {
+        int src;
+        int dest;
+
+        public Edge(int src, int dest) {
+            this.src = src;
+            this.dest = dest;
+        }
+    }
+
+    public static void hamiltonPath(ArrayList<Edge>[] graph, int src, HashSet<Integer> visited, String path, int originalSrc) {
+        if (visited.size() == graph.length - 1) {
+            System.out.println("Hamiltonian Path: " + path);
+            return;
+        }
+
+        visited.add(src);
+        for (Edge e : graph[src]) {
+            int neighbor = e.dest;
+            if (!visited.contains(neighbor)) {
+                hamiltonPath(graph, neighbor, visited, path + " -> " + neighbor, originalSrc);
+            }
+        }
+        visited.remove(src);
+    }
+
+    public static void main(String[] args) {
+        int N = 4;
+        int M = 4;
+        int[][] Edges = {{1, 2}, {2, 3}, {3, 4}, {2, 4}};
+
+        // Create an ArrayList array to represent the graph
+        ArrayList<Edge>[] graph = new ArrayList[N + 1]; // +1 because vertices are 1-based
+
+        // Initialize ArrayLists for each vertex
+        for (int i = 1; i <= N; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        // Add edges to the graph
+        for (int[] edge : Edges) {
+            int source = edge[0];
+            int destination = edge[1];
+            graph[source].add(new Edge(source, destination));
+        }
+
+        hamiltonPath(graph, 1, new HashSet<>(), "1", 1);
+    }
+}

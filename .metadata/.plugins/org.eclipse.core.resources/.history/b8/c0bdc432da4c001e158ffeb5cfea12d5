@@ -1,0 +1,15 @@
+package packagee18_Graphs;
+
+public class PP19_Dijoint_Set {
+
+	public static void main(String[] args) {
+	
+		int n = 7;
+		
+		int[] parent = new int[n];
+		int[] rank = new int[n];
+		
+
+	}
+
+}

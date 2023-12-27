@@ -1,0 +1,50 @@
+package package5_BackTracking;
+
+public class P6_Partition_Equal_SubSet_Sum {
+	
+	public static boolean partition(int[] arr) {
+		
+		int n = arr.length;
+		
+		if(n%2 != 0) {
+			return false;
+		}
+		
+		int target = n/2;
+		
+		return findPartition(arr, target, 0, 0);
+		
+	}
+	
+	public static boolean findPartition(int[] arr, int target, int ans, int i) {
+		
+		if(ans == target) {
+			return true;
+		}
+		
+		if(ans < target) {
+			if(findPartition(arr, target, ans+arr[i], i+1)) {
+				return true;
+			}
+			
+			if(findPartition(arr, target, ans, i+1)) {
+				return true;
+			}
+			
+			return false;
+		}
+		
+		return false;
+		
+	}
+
+	public static void main(String[] args) {
+
+		int arr[] = { 3, 1, 5, 9, 12 };
+		int n = arr.length;
+
+		System.out.println(partition(arr));
+
+	}
+
+}

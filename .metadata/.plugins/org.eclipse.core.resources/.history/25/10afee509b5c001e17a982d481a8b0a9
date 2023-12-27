@@ -1,0 +1,11 @@
+package package2_String;
+
+public class A1_Count_LowerCase_Vowels {
+
+	public static void main(String[] args) {
+		
+		String str = ""
+
+	}
+
+}

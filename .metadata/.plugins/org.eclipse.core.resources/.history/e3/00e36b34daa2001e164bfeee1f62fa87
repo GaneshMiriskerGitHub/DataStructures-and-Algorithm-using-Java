@@ -1,0 +1,10 @@
+package package9_ArrayList;
+
+public class P2_Lonely_Elements_in_ArrayList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

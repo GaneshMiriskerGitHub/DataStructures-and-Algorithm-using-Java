@@ -1,0 +1,24 @@
+package packagee16_Heaps;
+
+public class P1_Addition {
+	
+	/*
+	 * Step 1 : first add at the last index of the array
+	 * 
+	 * Step 2 : format the heap while loop code
+	 * 
+	 * Note : 
+	 * if currNode = i
+	 * then 
+	 *   currNode.left  = 2i+1
+	 *   currNode.right = 2i+2
+	 * 
+	 */
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

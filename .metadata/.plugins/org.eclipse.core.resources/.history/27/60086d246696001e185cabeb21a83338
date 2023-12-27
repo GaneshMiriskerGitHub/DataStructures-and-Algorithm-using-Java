@@ -1,0 +1,27 @@
+package com.demo.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.entity.Employee;
+
+@RestController
+public class EmployeeController {
+	
+	Map<Long, Employee> map = new HashMap<>();
+	
+	@GetMapping("/getAllEmployees")
+	public ResponseEntity<?> getAllEmployees() {
+		Employee empObj = new Employee();
+		empObj.id = 1;
+		empObj.email = "email";
+		
+		return new ResponseEntity<>(this.map.values(), HttpStatus.OK);
+	}
+
+}

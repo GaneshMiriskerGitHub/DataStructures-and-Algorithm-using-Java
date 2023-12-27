@@ -1,0 +1,48 @@
+package Type4_LCS_Longest_Common_SubSequence;
+
+public class P2_Longest_Common_SubString {
+	
+	/*
+	 * when the chars are same , add 1 + previous i-1, j-1
+	 * when not same reset to 0
+	 * 
+	 * paralelly keep track of max
+	 */
+	
+	// submission link:- https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+	
+	
+	public static int maxCommonSubstringTabulation(String str1, String str2) {
+		
+		int n = str1.length();
+		int m = str2.length();
+		
+		int[][] dp = new int[n+1][m+1];
+		
+		int max = 0;
+		
+		for(int i=1;i<dp.length;i++) {
+			for(int j=1;j<dp[i].length;j++) {
+				if(str1.charAt(i-1) == str2.charAt(j-1)) {
+					dp[i][j] = 1 + dp[i-1][j-1];
+					max = Math.max(max, dp[i][j]);
+				}else {
+					dp[i][j] = 0;
+				}
+			}
+		}
+		
+		return max;
+	}
+
+	public static void main(String[] args) {
+		
+		String str1 = "ABCDE"; int n = str1.length();
+		String str2 = "ABGEC"; int m = str2.length();
+		
+		// Tabulation
+		System.out.println(maxCommonSubstringTabulation(str1, str2));
+
+	}
+
+}

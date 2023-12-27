@@ -1,0 +1,16 @@
+package package5_BackTracking;
+
+	public static String findMaximumNumber(String str, int k) {
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		int M = 1234;
+		int k = 2;
+		
+		System.out.println(findMaximumNumber(String.valueOf(M), k));
+
+	}
+
+}

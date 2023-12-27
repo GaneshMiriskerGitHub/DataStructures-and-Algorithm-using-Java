@@ -1,0 +1,15 @@
+package package5_BackTracking;
+
+public class P6_Partition_Equal_SubSet_Sum {
+
+	public static void main(String[] args) {
+
+		int arr[] = { 3, 1, 5, 9, 12 };
+		int n = arr.length;
+
+		// Function call
+		partition(arr);
+
+	}
+
+}
