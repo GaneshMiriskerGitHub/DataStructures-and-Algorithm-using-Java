@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy package &apos;packagee12_Queue&apos; to &apos;DSA_Explained_Problems/src&apos;&#x0D;&#x0A;- Original project: &apos;DSA_Assignment_problems&apos;&#x0D;&#x0A;- Destination element: &apos;DSA_Explained_Problems/src&apos;&#x0D;&#x0A;- Original element: &apos;DSA_Assignment_problems/src/packagee12_Queue&apos;" description="Copy package" destination="=DSA_Explained_Problems/src" element1="/src&lt;packagee12_Queue" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1700113793976" version="1.0"/>
-</session>

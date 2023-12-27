@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename compilation unit &apos;package3_2D_Array.P10_Largest_Rectangle_with_Ones.java&apos; to &apos;PP10_Largest_Rectangle_with_Ones.java&apos;&#x0D;&#x0A;- Original project: &apos;DSA_SHEET_PROBLEMS&apos;&#x0D;&#x0A;- Original element: &apos;package3_2D_Array.P10_Largest_Rectangle_with_Ones.java&apos;&#x0D;&#x0A;- Renamed element: &apos;package3_2D_Array.PP10_Largest_Rectangle_with_Ones.java&apos;" description="Rename compilation unit &apos;P10_Largest_Rectangle_with_Ones.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;package3_2D_Array{P10_Largest_Rectangle_with_Ones.java" name="PP10_Largest_Rectangle_with_Ones.java" references="false" stamp="1696441167322" version="1.0"/>
-</session>
