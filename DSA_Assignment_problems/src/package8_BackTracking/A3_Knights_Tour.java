@@ -35,12 +35,12 @@ public class A3_Knights_Tour {
 		for(k=0;k<8;k++) {
 			next_x = x+xMoves[k];
 			next_y = y+yMoves[k];
-			if(isSafe(sol, next_x, next_y)) {
-				sol[next_x][next_y] = movei;
-				if(solveKTUtil(next_x, next_y, movei+1, sol, xMoves, yMoves)) {
+			if(isSafe(sol, x+xMoves[k], y+yMoves[k])) {
+				sol[x+xMoves[k]][y+yMoves[k]] = movei;
+				if(solveKTUtil(x+xMoves[k], y+yMoves[k], movei+1, sol, xMoves, yMoves)) {
 					return true;
 				}else {
-					sol[next_x][next_y] = -1;
+					sol[x+xMoves[k]][y+yMoves[k]] = -1;
 				}
 			}
 		}

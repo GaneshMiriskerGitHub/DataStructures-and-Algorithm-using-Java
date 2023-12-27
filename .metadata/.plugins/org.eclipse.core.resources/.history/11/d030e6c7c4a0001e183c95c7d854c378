@@ -1,0 +1,60 @@
+package Type1_Fibbonacci;
+
+import java.util.Arrays;
+
+public class Tester {
+
+	/*
+	 * for recursion and memoization :- https://www.youtube.com/watch?v=Y0lT9Fck7qI
+	 * 
+	 * for tabulation:- apna college
+	 */
+
+	
+
+	 static int knapSack(int W, int wt[], int val[], int n) 
+	    { 
+	        // Declare the table dynamically
+			int[][] memo = new int[val.length+1][W+1];
+			for(int i=0;i<memo.length;i++) {
+				Arrays.fill(memo[i], -1);
+			}
+			return maxValMemoizationUtil(val, wt, W, n, memo);
+	    } 
+	    
+
+		public static int maxValMemoizationUtil(int[] val, int[] wt, int W, int n, int[][] memo) {
+
+			if (n <= 0 || W == 0) {
+				return 0;
+			}
+			
+			if(memo[n][W] != -1) {
+				return memo[n][W];
+			}
+
+			if (wt[n - 1] <= W) {
+				int include = val[n - 1] + maxValRecursion(val, wt, W - wt[n - 1], n - 1);
+				int exclude = maxValRecursion(val, wt, W, n - 1);
+				memo[n][W] =  Math.max(include, exclude);
+				return memo[n][W];
+			} else {
+				int exclude = maxValRecursion(val, wt, W, n - 1);
+				memo[n][W] = exclude;
+				return memo[n][W];
+			}
+
+		}
+	public static void main(String[] args) {
+
+		int[] arr = {3,0,2,1,2};
+		
+		int start = 2;
+
+		boolean[] vis = new boolean[arr.length];
+		
+		System.out.println(print(arr, start, vis));
+
+	}
+
+}

@@ -9,8 +9,8 @@ public class P7_String_Conversion {
 		for (int i = 0; i < dp.length; i++) {
 			dp[i][0] = i;
 		}
-		for (int i = 0; i < dp.length; i++) {
-			dp[i][0] = i;
+		for (int i = 0; i < dp[0].length; i++) {
+			dp[0][i] = i;
 		}
 
 		for (int i = 1; i < dp.length; i++) {

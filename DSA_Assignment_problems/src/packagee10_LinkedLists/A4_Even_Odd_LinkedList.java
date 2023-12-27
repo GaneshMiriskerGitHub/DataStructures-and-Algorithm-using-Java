@@ -39,6 +39,7 @@ public class A4_Even_Odd_LinkedList {
 			System.out.print(temp.data+" -> ");
 			temp = temp.next;
 		}
+		System.out.println();
 	}
 	
 	public static Node evenOddLinkedList(Node head) {
@@ -66,6 +67,40 @@ public class A4_Even_Odd_LinkedList {
 		
 		return newHead.next;
 	}
+	
+	public static Node evenOddLinkedList1(Node head) {
+		
+		Node mergedLL = new Node(-1);
+		Node temp = mergedLL;
+		
+		
+		
+		
+		Node iterator = head;
+		// adding even nodes
+		while(iterator != null) {
+			if(iterator.data % 2 == 0) {
+				temp.next = new Node(iterator.data);
+				temp = temp.next;
+			}
+			iterator = iterator.next;
+		}
+		
+		
+		
+		iterator = head;
+		// adding odd value nodes
+		while(iterator != null) {
+			if(iterator.data % 2 == 1) {
+				temp.next = new Node(iterator.data);
+				temp = temp.next;
+			}
+			iterator = iterator.next;
+		}
+		
+		return mergedLL.next;
+		
+	}
 
 	public static void main(String[] args) {
 		
@@ -82,7 +117,7 @@ public class A4_Even_Odd_LinkedList {
 		System.out.println();
 		
 		System.out.println("after even odd :- ");
-		Node newNode = list.evenOddLinkedList(head);
+		Node newNode = list.evenOddLinkedList1(head);
 		list.printLL(newNode);
 		
 		

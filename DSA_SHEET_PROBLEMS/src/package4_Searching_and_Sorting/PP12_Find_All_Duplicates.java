@@ -17,7 +17,7 @@ public class PP12_Find_All_Duplicates { // https://www.youtube.com/watch?v=5wdQI
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { // i doubt this
 
 		int[] arr = { 1, 2, 3, 6, 3, 6, 1 };
 

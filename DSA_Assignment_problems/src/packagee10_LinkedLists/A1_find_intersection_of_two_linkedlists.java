@@ -32,7 +32,6 @@ public class A1_find_intersection_of_two_linkedlists {
 		return null;
 	}
 	
-	
 
 	public static void main(String[] args) {
 		

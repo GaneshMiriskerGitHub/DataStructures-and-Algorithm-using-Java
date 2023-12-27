@@ -1,6 +1,8 @@
 package packagee14_BinaryTrees;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class A4_Find_All_Duplicate_Subtrees {
 
@@ -28,52 +30,48 @@ public class A4_Find_All_Duplicate_Subtrees {
 
 	}
 
-	static HashMap<String, Integer> m;
+	static HashMap<String, Integer> map;
+	static List<Node> list;
 
 	public static String inOrder(Node root) {
 
 		if (root == null) {
-			return "";
+			return "#";
 		}
 
-		String str = "(";
+		String str = root.data +","+inOrder(root.left)+","+inOrder(root.right); // will take each substring
 
-		str = str + inOrder(root.left);
-		str = str + Integer.toString(root.data);
-		str = str + inOrder(root.right);
-
-		str += ")";
-
-		if (m.containsKey(str) && m.get(str) == 1) {
-			System.out.print(root.data + " ");
-		}
-
-		if (!m.containsKey(str)) {
-			m.put(str, 1);
-		} else {
-			m.put(str, m.get(str) + 1);
+		map.put(str, map.getOrDefault(str, 0)+1); // add count for each substring
+		
+		if(map.get(str) == 2) { // if duplicate is present
+			list.add(root);
 		}
 
 		return str;
 	}
 
-	public static void printAllDuplicatesInTree(Node root) {
-		m = new HashMap<>();
+	public static List<Node> printAllDuplicatesInTree(Node root) {
+		map = new HashMap<>();
+		list = new ArrayList<>();
 		inOrder(root);
+		return list;
 	}
 
 	public static void main(String[] args) {
 
 		Node root = null;
 		root = new Node(1);
-		root.left = new Node(2);
+		root.left = new Node(4);
 		root.right = new Node(3);
-		root.left.left = new Node(4);
-		root.right.left = new Node(2);
-		root.right.left.left = new Node(4);
-		root.right.right = new Node(4);
-		printAllDuplicatesInTree(root);
+		root.left.left = new Node(3);
+		root.right.left = new Node(4);
+		root.right.left.left = new Node(3);
+		root.right.right = new Node(3);
+		List<Node> ans = printAllDuplicatesInTree(root);
 
+		for(Node ele: ans) {
+			System.out.println(ele.data);
+		}
 	}
 
 }

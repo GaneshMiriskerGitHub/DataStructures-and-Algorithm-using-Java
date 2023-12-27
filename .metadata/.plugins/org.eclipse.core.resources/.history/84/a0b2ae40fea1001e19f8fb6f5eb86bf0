@@ -1,0 +1,43 @@
+package package5_Sorting;
+
+import java.util.Arrays;
+
+public class P6_Quick_Sort {
+
+	public static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
+	public static void quickSort(int[] arr, int s, int e) {
+		
+		int idx = partition(arr, s, e);
+		quickSort(arr, s,     idx-1);
+		quickSort(arr, idx+1, e);
+		
+	}
+	
+	public static void partition(int[] arr, int s, int e) {
+		
+		int i = s-1;
+		
+		for(int j=s;j<e;j++) {
+			
+		}
+		
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 6, 3, 9, 8, 2, 5 };
+
+		int s = 0;
+		int e = arr.length - 1;
+		quickSort(arr, s, e);
+
+		System.out.println(Arrays.toString(arr));
+
+	}
+
+}

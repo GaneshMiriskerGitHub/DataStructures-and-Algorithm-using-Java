@@ -1,0 +1,27 @@
+package package9_ArrayList;
+
+import java.util.Arrays;
+
+/*
+ * an array is monotonic if it is in asc or desc in order
+ */
+
+public class P1_Monotonic_ArrayList {
+	
+public boolean isMonotonic(int[] nums) {
+        
+        int n = nums.length;
+
+        if(nums[0] < nums[n-1]) {
+            Arrays.sort(nums, reverse());
+        }
+
+    }
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

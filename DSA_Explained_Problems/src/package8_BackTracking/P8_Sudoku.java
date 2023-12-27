@@ -106,10 +106,8 @@ public class P8_Sudoku {
 	
 	public static boolean solveSudoku(int[][] grid, int row, int col) {
 		
-		if(row == 9 && col == 0) {
+		if(row == 9) {
 			return true;
-		}else if(row == 9) {
-			return false;
 		}
 		
 		int nextRow = row;

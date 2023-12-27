@@ -1,0 +1,13 @@
+package Type1_Fibbonacci;
+
+public class Tester {
+
+	public static void main(String[] args) {
+
+		int[] arr = { 2, 3, 1, 1, 4 };
+
+		System.out.println(isReachable(arr));
+		System.out.println(minPathCount(arr));
+	}
+
+}

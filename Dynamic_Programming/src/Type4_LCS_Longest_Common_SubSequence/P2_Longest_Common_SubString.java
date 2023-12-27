@@ -2,6 +2,16 @@ package Type4_LCS_Longest_Common_SubSequence;
 
 public class P2_Longest_Common_SubString {
 	
+	/*
+	 * when the chars are same , add 1 + previous i-1, j-1
+	 * when not same reset to 0
+	 * 
+	 * paralelly keep track of max
+	 */
+	
+	// submission link:- https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+	
+	
 	public static int maxCommonSubstringTabulation(String str1, String str2) {
 		
 		int n = str1.length();

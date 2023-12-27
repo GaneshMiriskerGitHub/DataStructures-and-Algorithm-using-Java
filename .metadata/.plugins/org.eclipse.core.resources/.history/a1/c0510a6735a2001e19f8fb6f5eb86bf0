@@ -1,0 +1,40 @@
+package package9_ArrayList;
+
+import java.util.List;
+
+public class P1_Container_with_most_water {
+
+	public static int maxVal(List<Integer> list) {
+
+		int max = 0;
+		for (int i = 0; i < list.size(); i++) {
+			for (int j = i; j < list.size(); j++) {
+				int width = j - i;
+				int min = Math.min(list.get(i), list.get(j));
+				int currWater = width * min;
+				max = Math.max(max, currWater);
+			}
+		}
+
+		return max;
+	}
+
+	public static void main(String[] args) {
+
+		List<Integer> list = List.of(1, 1);
+
+		int max = 0;
+		for (int i = 0; i < list.size(); i++) {
+			for (int j = i; j < list.size(); j++) {
+				int width = j - i;
+				int min = Math.min(list.get(i), list.get(j));
+				int currWater = width * min;
+				max = Math.max(max, currWater);
+			}
+		}
+
+		System.out.println(max);
+
+	}
+
+}

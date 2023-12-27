@@ -20,6 +20,10 @@ public class P1_Catalans_Number {
 
 	// Memoization
 	public static int catalansMemo(int n, int[] memo) {
+		
+		if (n == 0 || n == 1) {
+			return 1;
+		}
 
 		if (memo[n] != -1) {
 			return memo[n];

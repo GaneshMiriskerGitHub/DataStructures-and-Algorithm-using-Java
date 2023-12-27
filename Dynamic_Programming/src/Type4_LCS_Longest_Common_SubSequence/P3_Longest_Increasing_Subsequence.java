@@ -1,6 +1,5 @@
 package Type4_LCS_Longest_Common_SubSequence;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,13 +33,14 @@ public class P3_Longest_Increasing_Subsequence {
 		
 		return dp[arr.length][arr2.length];	
 	}
+	
+
 
 	public static void main(String[] args) {
 		
 		int[] arr = {50, 3, 10, 7, 40, 80};
 		
-		
-		
+	
 		System.out.println(Lic(arr));
 
 	}

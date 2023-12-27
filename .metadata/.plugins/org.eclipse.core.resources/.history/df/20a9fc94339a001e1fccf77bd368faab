@@ -1,0 +1,33 @@
+package Type1_Fibbonacci;
+
+public class Tester {
+	
+	// 1 2 3 4 5
+	//     i    
+	
+	public static boolean isReachable(int[] arr) {
+		
+		int n = arr.length;
+		int currTarget = arr.length-1;
+		int pos = arr.length-1;
+		for(int i=arr.length-2;i>=0;i--) {
+			// is it possible to reach end from curr
+			int currTarget = i;
+			int maxSteps = arr[i];
+			int minExpectedReach = n-i;
+			if(maxSteps >= minExpectedReach) {
+				
+			}
+		}
+		
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 2, 3, 1, 1, 4 };
+
+		System.out.println(isReachable(arr));
+		//System.out.println(minPathCount(arr));
+	}
+
+}

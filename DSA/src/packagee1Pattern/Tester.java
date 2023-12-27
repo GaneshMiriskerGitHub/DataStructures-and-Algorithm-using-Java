@@ -2,63 +2,38 @@ package packagee1Pattern;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 public class Tester {
 
-	public static List<List<Integer>> threeSum(int[] nums) {
-
-		Arrays.sort(nums);
-
-		List<List<Integer>> list = new ArrayList<>();
-
-		for (int i = 0; i < nums.length-2; i++) {
-			
-			if (i > 0 && nums[i] == nums[i - 1]) {  // very important step
-                continue; // Skip duplicates
-            }
-			
-			
-			int l = i + 1;
-			int r = nums.length - 1;
-
-			while (l < r) {
-				if (nums[l] + nums[r] == 0-nums[i]) {
-			        List<Integer> result = new ArrayList<>();
-			        result.add(nums[i]);
-			        result.add(nums[l]);
-			        result.add(nums[r]);
-			        list.add(result);
-			        while(l<r && nums[l] == nums[l+1]) {
-			        	l++;
-			        }
-			        while(l<r && nums[r] == nums[r-1]) {
-			        	r--;
-			        }
-			        l++;
-			        r--;
-			    } else if (nums[l] + nums[r] < 0-nums[i]) {
-			        l++;
-			    } else {
-			        r--;
-			    }
-			}
-
-		}
-		System.out.println(list);
-		
-		return list;
-
-	}
+	
 
 	public static void main(String[] args) {
 
-		int[] arr = { -1,0,1,2, -1,-4 };
-
-		threeSum(arr);
+		int[] arr = new int[5];
 		
+		arr[0] = 1;
+		arr[1] = 2;
+		arr[2] = 3;
+		arr[3] = 4;
+//  	 0  1  2  3  4
+	//  [1][2][3][4][]
+		int position = 2;
+		int num = 34;
+		
+		System.out.println(Arrays.toString(arr));
+		
+		
+		for(int i=4;i>=3;i--) {
+			arr[i] = arr[i-1];
+		}
+		
+		arr[position] = num;
+		
+		System.out.println(Arrays.toString(arr));
+
 	}
 
 }

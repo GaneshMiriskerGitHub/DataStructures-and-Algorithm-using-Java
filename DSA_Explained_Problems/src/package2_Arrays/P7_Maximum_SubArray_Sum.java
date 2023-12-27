@@ -51,10 +51,10 @@ public class P7_Maximum_SubArray_Sum {
 		int currSum = 0;
 		for(int i=0;i<arr.length;i++) {
 			currSum+=arr[i];
+			max = Math.max(max, currSum);
 			if(currSum<0) {
 				currSum=0;
 			}
-			max = Math.max(max, currSum);
 		}
 		
 		return max;

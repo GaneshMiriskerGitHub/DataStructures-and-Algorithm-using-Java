@@ -2,96 +2,128 @@ package Type6_Matrix_Chain_Multiplication;
 
 import java.util.Arrays;
 
-public class P1_MCM_min_cost {
+/*
+ * given an 1D array
+ * find the minimum cost of multipying all the matrices
+ * 
+ * 1. matrix[axb] * [cxd]   =  a x b x d  only when b == c
+ * 2. if arr = {1, 2, 3, 4};
+ *             matrix[i] means ( arr[i-1] x arr[i] )   // so always loop must start from 1
+ *    matrices are :
+ *              1x2 , 2x3, 3x4
+ *              A1    A2   A3
+ *              
+ *   therefore no of matrices lie in a given array are n-1;
+ *   So, finally after all matrices multiplied result will be left with one last matric a x b and
+ *   the cost to shrink all the matrices to one must be minimum 
+ */
 
-	public static int minCost(int[] arr, int i, int j) {
+public class P1_MCM_min_cost { // all test cases passed
 
-		if (i == j)
-			return 0; // just one array
+	public static int minCost(int[] arr) {
+		int i = 1;
+		int j = arr.length - 1;
+		return minCostHelper(arr, i, j);
+	}
 
-		int ans = Integer.MAX_VALUE;
+	public static int minCostHelper(int[] arr, int i, int j) {
 
-		for (int k = i; k <= j - 1; k++) {
-			int cost1 = minCost(arr, i, k);
-			int cost2 = minCost(arr, k + 1, j);
+		if (i == j) // same matrix means there wont be any mulitplication
+			return 0;
+
+		int minCost = Integer.MAX_VALUE;
+		for (int k = i; k <= j - 1; k++) { // k defines no.of set where for 4 elements 3 set possible,
+											// for 3 elements 2 set possible,
+											// for 2 elements 1 set possible,
+											// for n elements n-1 set possible,
+											// i.e., why loop runs till j-1 even though when we sent n-1 initially
+			int cost1 = minCostHelper(arr, i, k);
+			int cost2 = minCostHelper(arr, k + 1, j);
 			int cost3 = arr[i - 1] * arr[k] * arr[j];
 			int finalCost = cost1 + cost2 + cost3;
-			ans = Math.min(ans, finalCost);
+			minCost = Math.min(minCost, finalCost);
 		}
 
-		return ans;
+		return minCost;
 
 	}
 
-	// Memoization
 	public static int minCostMemo(int[] arr, int i, int j, int[][] memo) {
 
 		if (i == j)
-			return 0; // just one array
-		
-		if(memo[i][j] != -1) {
+			return 0;
+
+		if (memo[i][j] != -1) {
 			return memo[i][j];
 		}
-		
-		
 
-		int ans = Integer.MAX_VALUE;
-
+		int minCost = Integer.MAX_VALUE;
 		for (int k = i; k <= j - 1; k++) {
 			int cost1 = minCostMemo(arr, i, k, memo);
 			int cost2 = minCostMemo(arr, k + 1, j, memo);
 			int cost3 = arr[i - 1] * arr[k] * arr[j];
 			int finalCost = cost1 + cost2 + cost3;
-			ans = Math.min(ans, finalCost);
+			minCost = Math.min(minCost, finalCost);
 		}
-		
-		memo[i][j] = ans;
 
-		return memo[i][j];
+		memo[i][j] = minCost;
+
+		return minCost;
 
 	}
-	
-	// Tabulation
+
 	public static int mcmTab(int[] arr) {
-		
+
 		int[][] dp = new int[arr.length][arr.length];
-		
-		// in initial step : all the diagonal result will be zero
-		for(int i=0;i<arr.length;i++) {
+
+		for (int i = 0; i < dp.length; i++) {
+			Arrays.fill(dp[i], -1);
+		}
+
+		for (int i = 0; i < dp.length; i++) {
 			dp[i][i] = 0;
 		}
-		// first row and first col is also filled with zero : due to starting from 0; 
-		for(int i=0;i<dp.length;i++) {dp[0][i] =0; dp[i][0] = 0; }
-		
-		int n = arr.length;
-		for(int len=2;len<=arr.length-1;len++) {
-			for(int i=1;i<=n-len;i++) {
-				int j = i+len-1;
-				dp[i][j] = Integer.MAX_VALUE;
-				for(int k=i;k<j;k++) {
-					int cost1 = dp[i][k];
-					int cost2 = dp[k+1][j];
-					int cost3 = arr[i-1]*arr[k]*arr[j];
-					int finalCost = cost1+cost2+cost3;
-					dp[i][j] = Math.min(dp[i][j], finalCost);
-				}
-			}
+
+		for (int i = 0; i < dp[0].length; i++) {
+			dp[0][i] = 0;
 		}
-		
-		
-		return dp[1][n-1];
+
+		int n = arr.length;
+		for (int len = 2; len < arr.length; len++) { // how many length
+
+			for (int row = 1; row <= n - len; row++) { // diagonal length decreasing
+				int col = row + len - 1;
+				int minCost = Integer.MAX_VALUE;
+				for (int k = row; k < col; k++) { // row and col and k comes intuitu from diagram, direct solution is
+													// always confusing , so recommended to always draw the table and
+													// then figure out pattern of row, col and k
+					int cost1 = dp[row][k];
+					int cost2 = dp[k + 1][col];
+					int cost3 = arr[row - 1] * arr[k] * arr[col];
+					int finalCost = cost1 + cost2 + cost3;
+					minCost = Math.min(minCost, finalCost);
+				}
+				dp[row][col] = minCost;
+			}
+
+		}
+
+		return dp[1][arr.length - 1];
+
 	}
 
 	public static void main(String[] args) {
 
 		int[] arr = { 1, 2, 3, 4, 3 };
 
-		System.out.println(minCost(arr, 1, arr.length - 1));
-		
+		System.out.println(minCost(arr));
+
 		int[][] memo = new int[arr.length][arr.length];
-		for(int i=0;i<memo.length;i++) Arrays.fill(memo[i], -1);
-		System.out.println(minCostMemo(arr, 1, arr.length-1, memo));
-		
+		for (int i = 0; i < memo.length; i++) {
+			Arrays.fill(memo[i], -1);
+		}
+		System.out.println(minCostMemo(arr, 1, arr.length - 1, memo));
+
 		System.out.println(mcmTab(arr));
 
 	}

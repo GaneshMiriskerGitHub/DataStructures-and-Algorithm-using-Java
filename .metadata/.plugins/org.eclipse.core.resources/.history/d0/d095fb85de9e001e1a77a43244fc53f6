@@ -1,0 +1,65 @@
+package Type2_0_1_KnapSack;
+
+import java.util.Arrays;
+
+/*
+ * divide the given array in two parts in any order : in such a way that, the difference between 
+ * both their sum should be minimum
+ */
+
+public class P4_Minimum_SubSet_Sum_Difference { // don't waste time 2 days busted
+
+	
+	
+	// memoization
+		public static int maxValue(int[] val, int[] wt, int i, int W, int[] dp) {
+			if (W <= 0)
+				return 0;
+			if (i == val.length) {
+				return 0;
+			}
+
+			if (dp[i] != -1) {
+				return dp[i];
+			}
+
+			int max = 0;
+			if (W >= wt[i]) {
+				int include = val[i] + maxValue(val, wt, i + 1, W - wt[i]);
+				int exclude = maxValue(val, wt, i + 1, W);
+				max = Math.max(include, exclude);
+			} else {
+				int exclude = maxValue(val, wt, i + 1, W);
+				max = exclude;
+			}
+
+			dp[i] = max;
+
+			return dp[i];
+
+		}
+		
+		
+	
+	// Tabulation
+	public static int findMinDiff(int[] arr) {
+		
+		int total = Arrays.stream(arr).sum();
+		
+		int target = total/2;
+		
+		int[][] dp = new int[arr.length+1][target+1];
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+
+		int arr[] = { 3, 1 };
+
+		System.out.println(findMinDiff(arr));
+
+	}
+
+}

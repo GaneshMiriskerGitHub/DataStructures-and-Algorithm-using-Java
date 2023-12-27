@@ -25,12 +25,36 @@ public class P2_Minimum_Jumps_Array { // this is not a variation of MCM, this is
 		
 		return dp[0];
 	}
-	
+
+
+	public static int minJumps2(int[] arr) {
+		int n = arr.length;
+		
+		int[] dp = new int[n];
+		Arrays.fill(dp, -1);
+		
+		dp[n-1] = 0;
+		
+		for(int i=n-2;i>=0;i--) {
+			int min = Integer.MAX_VALUE;
+			for(int j=i+1;j<=i+arr[i] && j<arr.length;j++) {
+				if(dp[j] != -1) {
+					min = Math.min(min, 1+dp[j]);  // counting step = memory given step + 1
+				}
+			}
+			if(min != Integer.MAX_VALUE) {
+				dp[i] = min;
+			}
+		}
+		
+		return dp[0];
+	}
+
 	public static void main(String[] args) {
 		
 		int[] arr = {2, 3, 1, 1, 4};
 		
-		System.out.println(minJumps(arr));
+		System.out.println(minJumps2(arr));
 
 	}
 

@@ -1,0 +1,43 @@
+package Type6_Matrix_Chain_Multiplication;
+
+import java.util.Arrays;
+
+public class Tester {
+
+	public static int minCost(int[] arr) {
+		int i = 1;
+		int j = arr.length - 1;
+		return minCostHelper(arr, i, j);
+	}
+
+	public static int minCostHelper(int[] arr, int i, int j) {
+
+		int minCost = Integer.MAX_VALUE;
+		for (int k = i; k <= j; k++) {
+			int cost1 = minCostHelper(arr, i, k);
+			int cost2 = minCostHelper(arr, k+1, j);
+			int cost3 = arr[i-1] * arr[k] * arr[j];
+			int finalCost = cost1 + cost2 + cost3;
+			minCost = Math.min(minCost, finalCost);
+		}
+		
+		return minCost;
+
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 1, 2, 3, 4, 3 };
+
+		System.out.println(minCost(arr, 1, arr.length - 1));
+
+		int[][] memo = new int[arr.length][arr.length];
+		for (int i = 0; i < memo.length; i++)
+			Arrays.fill(memo[i], -1);
+		System.out.println(minCostMemo(arr, 1, arr.length - 1, memo));
+
+		System.out.println(mcmTab(arr));
+
+	}
+
+}

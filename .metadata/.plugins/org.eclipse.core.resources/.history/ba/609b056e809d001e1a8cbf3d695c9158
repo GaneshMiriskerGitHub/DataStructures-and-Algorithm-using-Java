@@ -1,0 +1,24 @@
+package Type4_LCS_Longest_Common_SubSequence;
+
+import java.util.Arrays;
+
+public class Tester {
+	
+	public static int maxSubSequenceTabulation(String str1, String str2) {
+		
+		
+	}
+
+
+	public static void main(String[] args) {
+		
+		
+		int[] arr = {50, 3, 10, 7, 40, 80};
+		
+		
+		System.out.println(Lic(arr));
+		
+		
+	}
+}
+ 

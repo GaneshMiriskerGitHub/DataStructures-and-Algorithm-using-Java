@@ -1,0 +1,47 @@
+package Type1_Fibbonacci;
+
+import java.util.Arrays;
+
+public class Tester {
+
+	/*
+	 * for recursion and memoization :- https://www.youtube.com/watch?v=Y0lT9Fck7qI
+	 * 
+	 * for tabulation:- apna college
+	 */
+
+	
+
+	public static boolean print(int[] arr, int start, int[] dp) {
+		
+		if(arr[start] == 0) {
+			return true;
+		}
+		
+		boolean leftPossible = false;
+		if(start-arr[start] >= 0) {
+			leftPossible = print(arr, start-arr[start], dp);
+		}
+		
+		boolean rightPossible = false;
+		if(start+arr[start] <= arr.length-1) {
+		    rightPossible = print(arr, start+arr[start], dp);
+		}
+		
+		return leftPossible || rightPossible;
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = {3,0,2,1,2};
+		
+		int start = 2;
+		
+		int[] dp = new int[arr.length];
+		Arrays.fill(dp, -1);
+
+		System.out.println(print(arr, start, dp));
+
+	}
+
+}

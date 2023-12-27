@@ -1,8 +1,14 @@
 package Type3_Unbounded_Knapsack;
 
+/*
+ * find minimum no if coins for given Value
+ */
+
 public class P4_Min_Coin_Change {
 	
-	public static int minCoinChange(int[] coins, int V) {
+	// submission link:- https://practice.geeksforgeeks.org/problems/number-of-coins1824/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+	
+	public static int minCoinChange(int[] coins, int V) {  // same unbounded copy paste but we take min of include and exclude
 		
 		int[][] dp = new int[coins.length+1][V+1];
 		
